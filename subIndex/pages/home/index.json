@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "cutBox": "/compontents/cutBox/index",
+    "EssayListItem": "/compontents/essayListItem/index",
+    "GroupListItem": "/compontents/groupListItem/index",
+    "Screen": "/compontents/screen/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "FollowBtn": "/compontents/followBtn/index"
+  }
+}

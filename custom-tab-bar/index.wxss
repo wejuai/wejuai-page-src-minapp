@@ -1,0 +1,63 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 96rpx;
+  background: #fff;
+  display: flex;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.15);
+  padding-bottom: env(safe-area-inset-bottom); /* 兼容 iOS >= 11.2 */
+  padding-bottom: constant(safe-area-inset-bottom); /* 兼容 iOS < 11.2 */
+}
+.homeBack {
+  background: #F9F9F9;
+}
+.homeBack .cover-view {
+  color: #fff;
+}
+
+.tab-bar.tab-bar-border {
+  background-color: rgba(0, 0, 0, 0.33);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1rpx;
+  transform: scaleY(0.5);
+}
+
+.tab-bar-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  color: black;
+}
+.messageMark {
+  position: absolute;
+  top: 4rpx;
+  left: calc( 50% + 16rpx );
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 20rpx;
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+}
+
+.tab-bar-item .cover-image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.tab-bar-item .cover-view {
+  font-size: 20rpx;
+  color: #3C3A65;
+  line-height: 28rpx;
+  font-family: "PingFangSC-Medium", "PingFang SC";
+}

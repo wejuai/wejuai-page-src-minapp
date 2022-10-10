@@ -1,0 +1,41 @@
+<view class="ext-class">
+    <!-- 弹起内容 -->
+    <view class="promptContent" wx:if="{{backGroundShow}}">
+      <view class="promptBackground"
+      animation="{{backGroundAn}}"></view>
+      <!-- 内容容器 -->
+      <view class="promptBottomBox" wx:if="{{bodyShow}}"
+        animation="{{bodyAn}}">
+        <!-- 弹窗标题 -->
+        <view class="body_title" wx:if="{{title && title != ''}}">{{title}}</view>
+        <!-- 弹窗内容 -->
+        <view class="body_content">
+          <slot></slot>
+        </view>
+        <!-- 弹窗底部 -->
+        <view class="body_foot table">
+          <view class="row">
+            <view class="cell" bindtap="close">{{cancelText}}</view>
+            <view class="cell fc_main">
+            <button
+              wx:if="{{openType == 'share'}}"
+              class="body_foot_button"
+              open-type="share"
+              bindtap="close">{{confirmText}}</button>
+            <button
+              wx:elif="{{openType == 'getPhoneNumber'}}"
+              class="body_foot_button"
+              open-type="getPhoneNumber"
+              bindgetphonenumber="getPhoneNumber">{{confirmText}}</button>
+            <button
+              wx:elif="{{openType == 'openSetting'}}"
+              class="body_foot_button"
+              open-type="openSetting"
+              bindopensetting="openSetting">{{confirmText}}</button>
+            <view wx:else bindtap="confirm">{{confirmText}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>

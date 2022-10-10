@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "编辑回答",
+  "usingComponents": {
+    "Screen": "/compontents/screen/index",
+    "Editor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index"
+  }
+}

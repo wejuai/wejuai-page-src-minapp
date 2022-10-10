@@ -1,0 +1,8 @@
+.followBox {
+  display: inline-block;
+  padding: 6rpx 18rpx;
+  font-size: 28rpx;
+  border-radius: 48rpx;
+  background: #fff;
+  line-height: 38rpx;
+}

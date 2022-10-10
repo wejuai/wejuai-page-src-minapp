@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Prompt": "/compontents/prompt/index",
+    "Popup": "/compontents/popup/index",
+    "wxc-dialog": "/compontents/dialog/dialog"
+  }
+}

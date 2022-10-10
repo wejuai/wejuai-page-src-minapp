@@ -1,0 +1,158 @@
+.pageLoad {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.loadBox {
+  position: absolute;
+  top: 260rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 400rpx;
+  height: 150rpx;
+}
+.load_1, .load_2, .load_3 {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.load_1::after, .load_2::after, .load_3::after {
+  content: "";
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: -120rpx;
+  border-radius: 50%;
+}
+.load_1 {
+  top: 0;
+  left: 100rpx;
+}
+.load_2 {
+  top: 0;
+  left: 250rpx;
+}
+.load_3 {
+  top: 120rpx;
+  left: 160rpx;
+  height: 60rpx;
+}
+.load_1::after {
+  top: -80rpx;
+  background: blue;
+}
+.load_2::after {
+  top: 60rpx;
+  left: 100rpx;
+  background: lawngreen;
+}
+.load_3::after {
+  top: 70rpx;
+  background: red;
+}
+.load_1::after {
+  top: -80rpx;
+  background: blue;
+}
+.load_2::after {
+  top: 60rpx;
+  left: 100rpx;
+  background: lawngreen;
+}
+.load_3::after {
+  top: 70rpx;
+  background: red;
+}
+.intro {
+  position: absolute;
+  top: 500rpx;
+  width: 100%;
+  color: #fff;
+  margin: auto;
+  line-height: 50rpx;
+  font-size: 27rpx;
+  height: 350rpx;
+  overflow: hidden;
+  z-index: 100;
+  left: 0;
+  text-align: center;
+}
+.about {
+  font-size: 64rpx;
+  line-height: 140rpx;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0.9;
+  font-family: "FangSong";
+}
+.btns {
+  position: absolute;
+  bottom: 200rpx;
+  width: 100%;
+  text-align: center;
+}
+.btns view {
+  display: inline-block !important;
+}
+.btn {
+  display: inline-block;
+  padding: 10rpx;
+  border: solid 2rpx rgba(255,255,255,.5);
+  border-radius: 10rpx;
+  color: #fff;
+  vertical-align: middle;
+}
+.btn:first-child {
+  margin-right: 10rpx;
+}
+.logo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo_image, .pageLoad-index--logo_image {
+  width: 0.1vw;
+  height: 0.1vw;
+  animation: an_show 1000ms ease-out;
+  animation-delay: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes an_show
+{
+  0% {
+    width: 0vw;
+    height: 0vw;
+  }
+  50% {
+    width: 200vw;
+    height: 200vw;
+  }
+  64% {
+    width: 60vw;
+    height: 60vw;
+  }
+  74% {
+    width: 80vw;
+    height: 80vw;
+  }
+  82% {
+    width: 65vw;
+    height: 65vw;
+  }
+  90% {
+    width: 73vw;
+    height: 73vw;
+  }
+  94% {
+    width: 68vw;
+    height: 68vw;
+  }
+  100% {
+    width: 70vw;
+    height: 70vw;
+  }
+}

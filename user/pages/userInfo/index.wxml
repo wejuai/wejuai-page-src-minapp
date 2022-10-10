@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<wxs src="../../../wxs/util.wxs" module="util" />
+<view class="container">
+  <view class="intro_avater">
+    <image class="intro_avater_img" src="{{userInfo.headImage}}"
+      data-type="HEAD_IMAGE" bindtap="toCropper"></image>
+  </view>
+  <!-- 简介 -->
+  <view class="intro">
+    <view class="intro_item">
+      <view class="item_label">昵称:</view>
+      <view class="item_value" wx:if="{{isSet}}">
+        <input type="text" value="{{userInfo.nickName}}" placeholder="请输入昵称" placeholder-class="item_input" bindinput="changeNickName"></input>
+      </view>
+      <view class="item_value fc_gray_tint" wx:else>{{userInfo.nickName}}</view>
+    </view>
+    <view class="intro_item">
+      <view class="item_label">性别:</view>
+      <view class="item_value" wx:if="{{isSet}}">
+        <picker mode="selector" range="{{sexPicker}}" range-key="label"
+          value="{{userInfo.sexIdx}}"
+          bindchange="changeSex">{{userInfo.sexLabel}}</picker>
+        <image class="icon_r" src="../../../icon/user/right.png"></image>
+      </view>
+      <view class="item_value fc_gray_tint" wx:else>{{userInfo.sex}}</view>
+    </view>
+    <view class="intro_item">
+      <view class="item_label">所在地:</view>
+      <view class="item_value" wx:if="{{isSet}}">
+        <input type="text" value="{{userInfo.location}}" placeholder="请输入所在地" placeholder-class="item_input" bindinput="changeLocation"></input>
+        <image class="icon_r" src="../../../icon/user/right.png"></image>
+      </view>
+      <view class="item_value fc_gray_tint" wx:else>{{userInfo.location}}</view>
+    </view>
+    <view class="intro_item">
+      <view class="item_label">生日:</view>
+      <view class="item_value" wx:if="{{isSet}}">
+        <picker mode="date" end="{{newDate}}" value="{{userInfo.birthday}}" fields="day" bindchange="changeBirthday">{{userInfo.birthdayStr}}</picker>
+        <image class="icon_r" src="../../../icon/user/right.png"></image>
+      </view>
+      <view class="item_value fc_gray_tint" wx:else>{{userInfo.birthday}}</view>
+    </view>
+    <view class="intro_item">
+      <view class="item_label">签名:</view>
+      <view class="item_value" wx:if="{{isSet}}">
+        <textarea value="{{userInfo.inShort}}" style="width: 100%;box-sizing: border-box;padding-right: 60rpx;" placeholder="请输入简介" maxlength="{{500}}" auto-height bindblur="changeInShort"/>
+      </view>
+      <view class="item_value fc_gray_tint" wx:else>{{userInfo.inShort}}</view>
+    </view>
+  </view>
+  <!-- 按钮 -->
+  <view class="btns">
+    <view class="btn bg_main" style="color: #fff;" bindtap="save">保存</view>
+  </view>
+</view>

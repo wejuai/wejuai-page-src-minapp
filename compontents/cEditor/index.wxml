@@ -1,0 +1,74 @@
+<wxs module="utils" src="../../wxs/util.wxs"/>
+
+<block class="ext-class">
+  <view class="editorUtilBox" wx:if="{{!readOnly}}" style="bottom: {{bottom}}px;">
+    <view class="utilLeft" bindtap="manualBlur">
+      <image class="utilIcon {{isFocus ? '' : 'rotate'}}" src="/icon/editor/packup.png"></image>
+    </view>
+    <view class="utilRight">
+      <view class="utilR_img" style="margin-right: 40rpx;">
+        <image src="/icon/editor/font.png" catchtap="cutFonts"></image>
+        <view class="utilR_fonts" wx:if="{{utilFonts.show}}">
+          <text class="h1" bindtap="addTitle">大标题</text>
+          <text class="h2" bindtap="addMinTitle">小标题</text>
+          <text class="h3" bindtap="addSubTitle">副标题</text>
+          <text class="text fc_main" bindtap="addText">正文</text>
+        </view>
+      </view>
+      <view class="utilR_img" style="margin-right: 30rpx;" bindtap="uploadImg"><image src="/icon/editor/image.png"></image></view>
+      <view class="utilR_img" style="margin-right: 16rpx;" bindtap="revocation"><image src="/icon/editor/repeal.png"></image></view>
+      <view class="utilR_img" style="margin-right: 24rpx;" bindtap="recover"><image src="/icon/editor/retreat.png"></image></view>
+      <view class="utilR_img {{utils.findIndex(utilFonts.active, 'blod') > -1 ? 'fc_main' : ''}}" style="margin-right: 16rpx;" bindtap="blod"><text class="iconfont icon-jiacu"></text></view>
+      <view class="utilR_img {{utils.findIndex(utilFonts.active, 'italic') > -1 ? 'fc_main' : ''}}" style="margin-right: 22rpx;" bindtap="italic"><text class="iconfont icon-xieti"></text></view>
+      <view class="utilR_img"><image src="/icon/editor/color.png"></image></view>
+    </view>
+  </view>
+  <view wx:if="{{readOnly}}">
+    <view wx:for="{{htmlArr}}" wx:key="index">
+      <editor wx:if="{{item.type == 'editor'}}" id="editor_{{index}}" class="editor"/>
+      <image wx:if="{{item.type == 'image'}}" src="{{item.src}}" data-src="{{item.src}}"
+        data-idx="{{index}}"
+        style="{{item.style}}"
+        bindload="loadImg"
+        bindtap="previewImg"></image>
+    </view>
+  </view>
+  <editor
+    wx:if="{{!readOnly}}"
+    class="editor {{!readOnly ? 'background compile' : ''}}"
+    id="editor"
+    read-only="{{readOnly}}"
+    show-img-toolbar="{{showImgToolbar}}"
+    show-img-resize="{{showImgResize}}"
+    show-img-size="{{showImgSize}}"
+    placeholder="{{placeholder}}"
+    placeholder-class="editor_place"
+    bindfocus="focus"
+    bindready="ready"
+    bindblur="blur"
+    bindstatuschange="statusChange"
+    bindinput="editorInput"/>
+</block>
+<!-- 工具条 -->
+<!-- <view class="editorUtilBox" wx:if="{{!readOnly}}" style="bottom: {{bottom}}px;">
+  <view class="utilLeft" bindtap="manualBlur">
+    <image class="utilIcon {{isFocus ? '' : 'rotate'}}" src="/icon/editor/packup.png"></image>
+  </view>
+  <view class="utilRight">
+    <view class="utilR_img" style="margin-right: 40rpx;">
+      <image src="/icon/editor/font.png" catchtap="cutFonts"></image>
+      <view class="utilR_fonts" wx:if="{{utilFonts.show}}">
+        <text class="h1" bindtap="addTitle">大标题</text>
+        <text class="h2" bindtap="addMinTitle">小标题</text>
+        <text class="h3" bindtap="addSubTitle">副标题</text>
+        <text class="text fc_main" bindtap="addText">正文</text>
+      </view>
+    </view>
+    <view class="utilR_img" style="margin-right: 30rpx;" bindtap="uploadImg"><image src="/icon/editor/image.png"></image></view>
+    <view class="utilR_img" style="margin-right: 16rpx;" bindtap="recover"><image src="/icon/editor/repeal.png"></image></view>
+    <view class="utilR_img" style="margin-right: 24rpx;" bindtap="revocation"><image src="/icon/editor/retreat.png"></image></view>
+    <view class="utilR_img {{utils.findIndex(utilFonts.active, 'blod') > -1 ? 'fc_main' : ''}}" style="margin-right: 16rpx;" bindtap="blod"><text class="iconfont icon-jiacu"></text></view>
+    <view class="utilR_img {{utils.findIndex(utilFonts.active, 'italic') > -1 ? 'fc_main' : ''}}" style="margin-right: 22rpx;" bindtap="italic"><text class="iconfont icon-xieti"></text></view>
+    <view class="utilR_img" style="margin-right: 32rpx;"><image src="/icon/editor/color.png"></image></view>
+  </view>
+</view> -->

@@ -1,0 +1,7 @@
+<view class="ext-class">
+  <view class="getUserInfoBox" bindtap="clickTap">
+    <slot></slot>
+    <!-- <button wx:if="{{show}}" class="getUserInfo_btn ab-full" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button> -->
+    <button wx:if="{{show}}" class="getUserInfo_btn ab-full" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+  </view>
+</view>

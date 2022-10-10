@@ -1,0 +1,87 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="cover_box" data-type="ARTICLE_HEAD" bindtap="toCropper">
+      <view wx:if="{{!cover.url}}" class="cover_icon">
+        <text class="iconfont icon-add"></text>
+        <text class="iconText">封面图</text>
+      </view>
+      <image wx:if="{{cover.url}}" class="cover_img" mode="aspectFit" src="{{cover.url}}"></image>
+    </view>
+  </view>
+  <!-- 积分 -->
+  <view class="integralBox table">
+    <view class="row">
+      <view class="cell screen">
+        <Screen isHobby
+          id="screen"
+          isSearch="{{false}}" isSortType="{{false}}" isSort="{{false}}"
+          isHobby="{{false}}" 
+          bindscreen="screenChange">
+          <view class="integral">
+            <image class="integralIcon" src="/icon/jifen.png"></image>
+            <input
+              disabled="{{type == 'compile'}}"
+              class="integralInput {{type == 'compile' ? 'fc_gray_font' : ''}}"
+              placeholder="所需积分数"
+              value="{{essay.integral}}"
+              type="number"
+              bindinput="integralInput"></input>
+          </view>
+        </Screen>
+      </view>
+    </view>
+  </view>
+  <!-- 标题 -->
+  <view class="title bc_gray_font">
+    <input class="titleInput"
+      disabled="{{type == 'compile'}}"
+      maxlength="20"
+      value="{{essay.title}}"
+      placeholder="请输入标题" placeholder-class="fc_gray_font"
+      bindinput="titleInput"></input>
+  </view>
+  <!-- 内容 -->
+  <view class="editorBox">
+    <!-- <cEditor
+      readOnly="{{type == 'compile'}}"
+      imageType="ARTICLE"
+      placeholder="请输入正文"
+      html="{{essay.text}}"
+      placeholder-class="editor_place"
+      bindinput="editorInput"/> -->
+    <hf_editor
+      width="100%" height="600rpx"
+      readOnly="{{type == 'compile'}}"
+      placeholder="{{type == 'compile' ? '' : '请输入正文'}}"
+      html="{{essay.text}}"
+      bind:Content="getHtml"
+      bind:insertImage="insertImage" id="hf_editor"/>
+  </view>
+  <!-- 补充内容 -->
+  <view class="editorBox" wx:if="{{type == 'compile'}}">
+    <!-- <view class="editorStatus bg_gray_tint">补充内容</view> -->
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- {{replenishTime}} 补充以下内容 --------
+    </view>
+    <!-- <cEditor
+      placeholder="文章补充内容"
+      bindinput="replenishEditorInput"/> -->
+    <hf_editor
+      width="100%" height="600rpx"
+      placeholder="文章补充内容"
+      bind:Content="getReplenishHtml"
+      id="hf_editor"/>
+  </view>
+  <view class="buttons">
+    <view wx:if="{{type == 'create'}}" class="button" bindtap="saveUtil">保存草稿</view>
+    <view class="button" bindtap="submitUtil">发布</view>
+  </view>
+</view>
+<!-- 手机号授权弹窗 -->
+<Popup id="popup"
+  title="手机号授权" openType="getPhoneNumber"
+  confirmText="授权" cancelText="暂不授权"
+  callBackKey="popupConfirm">
+  <block>发布付费文章需要授权手机号</block>
+</Popup>

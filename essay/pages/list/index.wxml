@@ -1,0 +1,18 @@
+<view class="container bgc_page">
+  <!-- 头部 -->
+  <!-- <view class="head">
+    <Screen placeholder="搜索文章" bindscreen="getEssayList"/>
+  </view> -->
+  <!-- 列表 -->
+  <ScrollMore id="scrollEssay"
+    top="{{scroll_top}}"
+    current="{{essay.current}}" delay="{{scroll_delay}}"
+    bindloadList="getEssayList">
+    <view class="list" wx:if="{{essay.list.length > 0}}">
+      <EssayListItem wx:for="{{essay.list}}"
+        wx:key="index"
+        info="{{item}}"
+        showHobby showAuthor="{{false}}"/>
+    </view>
+  </ScrollMore>
+</view>

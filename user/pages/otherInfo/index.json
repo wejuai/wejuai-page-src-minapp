@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "component": true,
+  "usingComponents": {
+    "Header": "/compontents/header/index",
+    "FollowBtn": "/compontents/followBtn/index"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

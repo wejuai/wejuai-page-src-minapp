@@ -1,0 +1,37 @@
+<view class="star" id="{{info.id}}" style="width: {{size.width}}px;height: {{size.height}}px;top: {{size.top}}px;left: {{size.left}}px;z-index: {{zIndex}};" catchtap="starClick">
+  <image class="star_image_background" src="{{info.smallBackground}}"
+    loadImg="/images/universe/starImage_6.png"/>
+  <image class="star_image_background star_bg_1" src="{{info.smallBackground}}"
+    loadImg="/images/universe/starImage_6.png"/>
+  <!-- <image class="star_image_background star_bg_2" src="{{info.smallBackground}}"
+    loadImg="/images/universe/starImage_6.png"/>
+  <image class="star_image_background star_bg_3" src="{{info.smallBackground}}"
+    loadImg="/images/universe/starImage_6.png"/> -->
+  <image class="star_image_texture show" src="{{info.smallTexture}}"
+    style="transform: rotate({{info.angle}}deg);"
+    loadImg="/images/universe/starImage_6.png"/>
+</view>
+<view class="starInfoBox" wx:if="{{backGroundShow}}">
+  <view class="moreUtilBackground" animation="{{backGroundAn}}"
+    catchtap="close"></view>
+  <view class="starInfo {{starInfoShow ? 'starInfoShow' : 'starInfoHide'}}"
+    style="width: {{size.width}}px;height: {{size.height}}px;top: {{maxSize.top}}px;left: {{maxSize.left}}px;" catchtap="close">
+    <image class="star_image_background" full
+      src="{{info.bigBackground}}"
+      loadImg="{{info.smallBackground}}"
+      bindload="starBackgroundLoadEnd"/>
+    <image class="star_image_background star_bg_1" full
+      src="{{info.bigBackground}}"
+      loadImg="{{info.smallBackground}}"/>
+    <image class="star_image_background star_bg_2" full
+      src="{{info.bigBackground}}"
+      loadImg="{{info.smallBackground}}"/>
+    <image class="star_image_background star_bg_3" full
+      src="{{info.bigBackground}}"
+      loadImg="{{info.smallBackground}}"/>
+    <image class="star_image_texture {{ starLoadEnd ? 'show' : '' }}" full
+      src="{{info.bigTexture}}"
+      style="transform: rotate({{info.angle}}deg);"
+      loadImg="{{info.smallbackground}}"/>
+  </view>
+</view>

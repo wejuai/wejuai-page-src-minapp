@@ -1,0 +1,32 @@
+<!--answer/pages/upData/index.wxml-->
+<view slot="content" class="container">
+  <!-- 简介 -->
+  <view class="editorBox">
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- 描述 --------
+    </view>
+    <textarea
+      class="inShortTextarea"
+      value="{{answer.inShort}}"
+      placeholder="回答描述：作者未选定回答前只可看到描述内的信息"
+      placeholder-class="fc_gray_font"
+      maxlength="{{200}}"
+      bindinput="inShortTextareaInput"
+      auto-height></textarea>
+  </view>
+  <!-- 内容 -->
+  <view class="editorBox">
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- 回答正文 --------
+    </view>
+    <Editor
+      class="editor"
+      placeholder="回答正文：针对悬赏提供的回答正文"
+      html="{{answer.text}}"
+      placeholder-class="fc_gray_font"
+      bindinput="editorInput"/>
+  </view>
+  <view class="buttons">
+    <view class="button" bindtap="submit">发布</view>
+  </view>
+</view>

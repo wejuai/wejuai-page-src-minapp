@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "loadItem": "/compontents/loadItem/index"
+  }
+}

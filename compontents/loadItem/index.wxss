@@ -1,0 +1,59 @@
+.loadItem {
+  text-align: left;
+  margin: auto;
+  margin-top: 20rpx;
+  width: 96%;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.loadItem .view {
+  display: inline-block;
+}
+.loadItem .body {
+  width: 100%;
+  padding-top: 20rpx;
+  display: block;
+}
+.img {
+  width: 254rpx;
+  height: 134rpx;
+}
+.w_80z {
+  width: 80%;
+}
+.w_100z {
+  width: 100%;
+}
+.w_60 {
+  width: 60rpx;
+}
+.w_img_r {
+  width: calc( 100% - 264rpx );
+}
+.ml_10 {
+  margin-left: 10rpx;
+}
+.h_60 {
+  height: 60rpx;
+}
+.h_40 {
+  height: 40rpx;
+}
+
+.loadFrames {
+  animation: pulse 1s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+}

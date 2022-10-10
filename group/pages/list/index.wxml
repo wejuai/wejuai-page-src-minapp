@@ -1,0 +1,14 @@
+<view class="container">
+  <!-- 头部 -->
+  <!-- <view class="head">
+    <Screen placeholder="悬赏文章" bindscreen="getGroupList"/>
+  </view> -->
+  <!-- 列表 -->
+  <ScrollMore id="scrollGroup"
+    current="{{group.current}}" delay="{{scroll_delay}}"
+    bindloadList="getGroupList">
+    <view class="list" wx:if="{{group.list.length > 0}}">
+      <GroupListItem wx:for="{{group.list}}" wx:key="index" showHobby info="{{item}}"/>
+    </view>
+  </ScrollMore>
+</view>

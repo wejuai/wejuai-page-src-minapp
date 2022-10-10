@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "已购文章",
+  "usingComponents": {
+    "EssayListItem": "/compontents/essayListItem/index",
+    "Screen": "/compontents/screen/index"
+  }
+}

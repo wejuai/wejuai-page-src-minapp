@@ -1,0 +1,13 @@
+<wxs module="util" src="../../../wxs/util.wxs"/>
+<view class="hobbyes">
+  <view class="hobby_item_box"
+    wx:for="{{hobbyes}}" wx:key="idnex"
+    data-id="{{item.id}}" data-idx="{{index}}"
+    bindtap="toHobby">
+    <image class="hobby_item_cover" src="{{item.image}}"/>  
+    <view class="hobby_item_info">
+      <view class="name">{{item.name}}</view>
+      <view class="inshort">有 {{util.numAbb(item.followed)}} 位{{item.name}}星人关注</view>
+    </view>
+  </view>
+</view>

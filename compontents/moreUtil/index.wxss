@@ -1,0 +1,171 @@
+.moreUtilBtn {
+  position: fixed;
+  bottom: 100rpx;
+  right: 60rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 10;
+}
+.movableArea {
+  width: 100%;
+  height: 100%;
+}
+.addIcon {
+  line-height: 100rpx;
+  font-size: 50rpx;
+  font-weight: 600;
+  color: #fff;
+}
+.moreUtilContent {
+  position: fixed;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 20;
+}
+.moreUtilBackground {
+  position: absolute;
+  width: 100%;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+  background: #fff;
+  opacity: 0.1;
+}
+.moreBottomBox {
+  position: absolute;
+  width: 100%;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 20;
+  transform: translate(0, 100%);
+}
+.closeBox {
+  width: 100%;
+  text-align: center;
+  padding: 86rpx 0rpx 160rpx;
+}
+.closeIcon {
+  display: inline-block;
+  margin: auto;
+  width: 98rpx;
+  height: 98rpx;
+  background: #DEDEDE;
+  border-radius: 50%;
+  position: relative;
+}
+.closeIcon>text {
+  font-size: 31rpx;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bodyBox {
+  width: 100%;
+  text-align: center;
+}
+.bodyItem {
+  display: inline-block;
+  text-align: center;
+  transform: translate(0rpx, 50vh);
+}
+.bodyItem:not(:nth-child(3n + 1)) {
+  margin-left: 130rpx;
+}
+.bodyItem:nth-child(1) {
+  animation: utilUp 400ms ease-out 0s 1 normal forwards;
+}
+.bodyItem:nth-child(2) {
+  animation: utilUp 400ms ease-out 150ms 1 normal forwards;
+}
+.bodyItem:nth-child(1) .utilItemImg {
+  animation: utilImageUp 400ms ease-out 0s 1 normal forwards;
+}
+.bodyItem:nth-child(2) .utilItemImg {
+  animation: utilImageUp 400ms ease-out 150ms 1 normal forwards;
+}
+@keyframes utilUp {
+  0% { transform: translate(0rpx, 30vh); }
+  50% { transform: translate(0rpx, 10vh); }
+  100% { transform: translate(0rpx, 0vh); }
+}
+@keyframes utilImageUp {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(0deg); }
+}
+.utilItemIcon {
+  display: inline-block;
+  border-radius: 50%;
+  color: #fff;
+  width: 150rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  font-weight: 600;
+  margin-bottom: 30rpx;
+  font-size: 70rpx;
+}
+.utilItemImg {
+  display: inline-block;
+  border-radius: 50%;
+  width: 200rpx;
+  height: 200rpx;
+}
+.utilLabel {
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #272727;
+  line-height: 48px;
+}
+.essay .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(27, 154, 255, .2), rgba(27, 154, 255, .8));
+}
+.group .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 209, 26, .2), rgba(255, 209, 26, .8));
+}
+.save .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 209, 26, .2), rgba(255, 209, 26, .8));
+}
+.delete .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 26, 26, .2), rgba(255, 26, 26, .8));
+}
+.compile .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(58, 132, 228, .2), rgba(58, 132, 228, .8));
+}
+.submit .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(58, 132, 228, .2), rgba(58, 132, 228, .8));
+}
+.revocation .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(235, 217, 61, .2), rgba(235, 217, 61, .8));
+}
+.report .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.delayed .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.return .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.increase .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.setIntegral .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.createAnswer .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.myAnswer .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}
+.designate .utilItemIcon {
+  background-image: linear-gradient(100deg, rgba(255, 72, 26, .2), rgba(255, 72, 26, .8));
+}

@@ -1,0 +1,127 @@
+{
+  "usingComponents": {
+    "cImage": "/compontents/cImage/index",
+    "ScrollMore": "/compontents/scroll/index",
+    "GetUserInfoBox": "/compontents/getUserInfoBox/index"
+  },
+  "pages": [
+    "pages/pageLoad/index",
+    "pages/cropper/index",
+    "pages/user/index",
+    "pages/message/index",
+    "pages/home/index",
+    "pages/webLogin/index",
+    "setting/pages/setting/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "subpackages": [
+    {
+      "root": "essay",
+      "pages": [
+        "pages/upData/index",
+        "pages/info/index",
+        "pages/list/index",
+        "pages/draft/index"
+      ]
+    },
+    {
+      "root": "group",
+      "pages": [
+        "pages/upData/index",
+        "pages/info/index",
+        "pages/list/index"
+      ]
+    },
+    {
+      "root": "subIndex",
+      "pages": [
+        "pages/home/index"
+      ]
+    },
+    {
+      "root": "user",
+      "pages": [
+        "pages/userInfo/index",
+        "pages/detail/index",
+        "pages/withdraw/index",
+        "pages/collect/index",
+        "pages/draft/index",
+        "pages/buyed/index",
+        "pages/attention/index",
+        "pages/hobby/index",
+        "pages/follow/index",
+        "pages/otherInfo/index"
+      ]
+    },
+    {
+      "root": "integral",
+      "pages": [
+        "pages/myIntegral/index",
+        "pages/detailList/index",
+        "pages/recharge/index",
+        "pages/withdraw/index",
+        "pages/detailInfo/index",
+        "pages/pay/index"
+      ]
+    },
+    {
+      "root": "message",
+      "pages": [
+        "pages/chatRoom/index",
+        "pages/sysChatRoom/index"
+      ]
+    },
+    {
+      "root": "answer",
+      "pages": [
+        "pages/upData/index",
+        "pages/deal/index",
+        "pages/draft/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/message/index": {
+      "packages": [
+        "message"
+      ]
+    },
+    "pages/user/index": {
+      "packages": [
+        "essay"
+      ]
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#333333",
+    "selectedColor": "#00C356",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home_active.png"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "text": "消息",
+        "iconPath": "icon/message.png",
+        "selectedIconPath": "icon/message_active.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "icon/user.png",
+        "selectedIconPath": "icon/user_active.png"
+      }
+    ]
+  }
+}

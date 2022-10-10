@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "star": "../../compontents/star/index"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

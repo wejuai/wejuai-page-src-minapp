@@ -1,0 +1,4 @@
+<view class="ext-class">
+  <view wx:if="{{is && !isUser}}" class="followBox fc_main" bindtap="cancelAttention">已关注</view>
+  <view wx:if="{{!is && !isUser}}" class="followBox bg_main fc_white" bindtap="addAttention"><b class="icon-add iconfont"></b> 关注</view>
+</view>

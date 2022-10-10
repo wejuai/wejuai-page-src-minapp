@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "积分明细",
+  "usingComponents": {
+    "cutBox": "/compontents/cutBox/index",
+    "Screen": "/compontents/screen/index"
+  }
+}

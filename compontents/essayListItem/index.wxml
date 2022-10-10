@@ -1,0 +1,53 @@
+<view class="box ani_{{index}}" >
+  <view class="box_in">
+    <!-- 内容 -->
+    <view class="body" data-id="{{info.id}}" bindtap="toEssay">
+      <view class="body_title">
+        <view class="body_title_txt ellipsis">{{info.title}}</view>
+        <image wx:if="{{show_author}}" lazy-load="true" src="/icon/zuozhe.png" class="zuozheIcon"/>
+        <view class="title-right">
+          <view wx:if="{{show_integral}}" class="title-right-item">
+            <image src="/icon/jifen.png" class="titleIcon"></image>
+            <text class="titleIconText">{{info.integral}}</text>
+          </view>
+          <view wx:if="{{show_locked}}" class="title-right-item" style="padding: 0rpx;">
+            <image src="/icon/suoding.png" class="titleIcon"></image>
+          </view>
+          <view wx:if="{{showHobby && info.hobbyName && info.hobbyName != ''}}" class="title-right-item hobbyName">
+            <text class="titleIconText fc_main">{{info.hobbyName}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="body_content">
+        <image wx:if="{{info.coverUrl && info.coverUrl != ''}}" class="content_headImage" src="{{info.coverUrl}}" mode="aspectFill"/>
+        <view class="content_txt {{info.coverUrl && info.coverUrl != '' ? 'ml_270' : ''}}">
+          <text>{{info.inShort}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{foot}}" class="foot">
+      <!-- 阅读 -->
+      <view class="foot_item fc_gray">
+        <image class="footIcon" src="/icon/yuedu.png"></image>
+        <view class="foot_item_num">{{info.displayNum}}</view>
+      </view>
+      <!-- 点赞 -->
+      <view class="foot_item fc_gray">
+        <image wx:if="{{info.star}}" class="footIcon" src="/icon/ziyuan_active_1.png"></image>
+        <image wx:else class="footIcon" src="/icon/ziyuan.png"></image>
+        <view class="foot_item_num">{{info.starNum}}</view>
+      </view>
+      <!-- 收藏 -->
+      <view class="foot_item fc_gray">
+        <image wx:if="{{info.collect}}" class="footIcon" src="/icon/shoucang_active_1.png"></image>
+        <image wx:else class="footIcon" src="/icon/shoucang.png"></image>
+        <view class="foot_item_num">{{info.collectNum}}</view>
+      </view>
+      <!-- 评论 -->
+      <view class="foot_item fc_gray">
+        <image class="footIcon" src="/icon/pinglun.png"></image>
+        <view class="foot_item_num">{{info.commentNum}}</view>
+      </view>
+    </view>
+  </view>
+</view>

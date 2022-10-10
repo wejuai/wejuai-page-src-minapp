@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Star": "../star/index",
+    "UniverseUtil": "../universeUtil/index"
+  }
+}

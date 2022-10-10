@@ -1,0 +1,56 @@
+<view class="box">
+  <view class="box_in">
+    <view class="head">
+      <!-- 用户信息 -->
+      <GetUserInfoBox ext-class="head_cover"
+        userId="{{info.userId}}">
+        <image class="head_cover_img" src="{{info.headImage}}"/>
+      </GetUserInfoBox>
+      <GetUserInfoBox ext-class="head_nickName"
+        userId="{{info.userId}}">{{info.nickName}}</GetUserInfoBox>
+      <!-- 爱好 -->
+      <view class="hobby" wx:if="{{showHobby}}" data-hobbyid="{{info.hobbyId}}" catchtap="toHobby">
+        <view wx:if="{{info.hobbyName}}"
+          class="hobby_name">{{info.hobbyName}}</view>
+      </view>
+    </view>
+    <!-- 内容 -->
+    <view class="body" data-id="{{info.id}}" bindtap="toEssay">
+      <view class="body_title ellipsis_2">
+        <view class="body_title_txt">{{info.title}}</view>
+      </view>
+      <view class="body_content">
+        <image wx:if="{{info.coverUrl && info.coverUrl != ''}}" class="content_headImage" src="{{info.coverUrl}}"/>
+        <view class="content_txt {{info.coverUrl && info.coverUrl != '' ? 'ml_270' : ''}}">
+          <text>{{info.inShort}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{foot}}" class="foot">
+      <!-- 阅读 -->
+      <view class="foot_item fc_gray">
+        <text class="iconfont icon-yuedu" style="font-size: 36rpx"></text>
+        <view class="foot_item_num">{{info.displayNum}}</view>
+      </view>
+      <!-- 点赞 -->
+      <!-- <view class="foot_item fc_gray" bindtap="tabStar"> -->
+      <view class="foot_item fc_gray">
+        <text class="iconfont icon-ziyuan {{info.star ? 'fc_main' : ''}}"></text>
+        <view class="foot_item_num {{info.star ? 'fc_main' : ''}}">{{info.starNum}}</view>
+      </view>
+      <!-- 收藏 -->
+      <!-- <view class="foot_item fc_gray" bindtap="tabCollect"> -->
+      <view class="foot_item fc_gray">
+        <text class="iconfont icon-shoucang {{info.collect ? 'fc_main' : ''}}"></text>
+        <view class="foot_item_num {{info.collect ? 'fc_main' : ''}}">{{info.collectNum}}</view>
+      </view>
+      <!-- 评论 -->
+      <view class="foot_item fc_gray">
+        <text class="iconfont icon-pinglun"></text>
+        <view class="foot_item_num">{{info.commentNum}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 横幅 -->
+  <view wx:for="{{mark}}" wx:key="index" class="mark {{item.bgc}} {{item.orientation}}">{{item.title}}</view>
+</view>

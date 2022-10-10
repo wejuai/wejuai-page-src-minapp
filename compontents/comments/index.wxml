@@ -1,0 +1,62 @@
+<!-- 弹起键盘 -->
+<view class="commentsBox fix">
+
+  <!-- 底部输入框 -->
+  <view wx:if="{{!inputShow}}" class="comment_bottom">
+    <view class="comment_input ellipsis" bindtap="openInput">{{value == "" ? placeholder : value}}</view>
+    <image class="comment_bottom_icon" src="/icon/ic_add_image.png"
+      bindtap="sendImg"></image>
+  </view>
+
+  <!-- 浮动输入框 -->
+  <!-- <view wx:if="{{true}}"  -->
+  <view wx:if="{{inputShow}}" 
+    class="comment_top"
+    style="bottom: {{fixBottom}}px;">
+    <textarea class="comment_top_text"
+      adjust-position="{{false}}" show-confirm-bar="{{false}}"
+      value="{{value}}" focus="{{focus}}"
+      placeholder="说点什么..." placeholder-class="input_placeholder"
+      auto-height
+      bindinput="inputInput" bindconfirm="inputConfirm"
+      bindblur="bindblur" bindfocus="bindfocus"></textarea>
+    <view class="comment_top_text_btn"
+      bindtap="inputConfirm">发布</view>  
+  </view>
+</view>
+
+<!-- 输入部分 -->
+<!-- <view class="table">
+  <view class="row topBox">
+    <view wx:if="{{pre}}" class="cell pre fc_gray_font ellipsis">
+      <slot name="pre"></slot>
+    </view>
+    <view class="cell inputBox">
+      <view wx:if="{{!inputShow}}" class="inputView"
+        bindtap="openInput">{{placeholder}}</view>
+      <input wx:else
+        class="input" type="text"
+        value="{{value}}"
+        focus="{{focus}}"
+        cursor-spacing="{{0}}"
+        placeholder="{{placeholder}}"
+        adjust-position="{{false}}"
+        bindinput="inputInput"
+        bindfocus="bindfocus"
+        bindblur="bindblur"
+        bindconfirm="inputConfirm"></input>
+    </view>
+    <view wx:if="{{!notUtil}}" class="cell switchUtilBox">
+      <view class="switchUtil" bindtap="switchUtil">
+        <text class="switchUtilIcon iconfont icon-add"></text>
+      </view>
+    </view>
+  </view>
+</view> -->
+<!-- 工具部分 -->
+<!-- <view class="utilBox" animation="{{animation}}">
+  <view wx:if="{{pre}}"></view>
+  <view class="utilItem bc_gray_font" bindtap="sendImg">
+    <text class="iconfont icon-tupian"></text>
+  </view>
+</view> -->

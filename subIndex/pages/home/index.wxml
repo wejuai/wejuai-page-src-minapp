@@ -1,0 +1,70 @@
+<MoreUtil ext-class="container" hobby="{{hobby}}" hide="{{notFollow}}" bindfollow="attention">
+  <view slot="content" class="container">
+    <!-- 自定义导航栏 -->
+    <view class="customBar" style="top:{{statusBarHeight}}px">
+      <view class="tobackIcon iconfont icon-fanhui" bindtap="toBack"></view>
+      <image class="customBar_home_icon" src="/icon/toHome.png" bindtap="toHome"></image>
+      <view class="customBar_search_box">
+        <view class="customBar_search_icon_box {{searchIconShow && searchValue.length == 0 ? '' : 'hide'}}">
+          <image class="customBar_search_icon" src="/subIndex/images/search.png"></image>
+          <text class="customBar_search_txt">爱好内搜索</text>
+        </view>
+        <input class="customBar_search_input" type="text"
+          bindfocus="hideSearchIcon" bindblur="showSearchIcon"
+          bindinput="searchInput" bindconfirm="searchClick"></input>
+      </view>
+    </view>
+    <!-- 头部 -->
+    <view class="header" style="height: {{statusBarHeight + 180}}px">
+      <cImage ext-class="headBackground" src="/subIndex/images/headImg.png"/>
+      <view class="ab-full headBox" style="top: {{statusBarHeight + 50}}px">
+        <!-- 爱好头部 -->
+        <view class="hobbyInfoBox table">
+          <view class="row" bindtap="toDeal">
+            <view class="cell avatarBox">
+              <image src="{{hobby.image}}" class="hobbyIcon"/>
+            </view>
+            <view class="cell nameBox">
+              <view class="hobbyName">{{hobby.name}}</view>
+              <FollowBtn otherId="{{hobby.id}}" state="hobby"
+                bindcallback="cutFollow" hash="{{followHash}}"
+                hobby="{{hobby}}" ext-class="attentionBtn"/>
+              <image class="starIcon" src="/icon/location.png" bindtap="toStar"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 列表 -->
+    <view class="body">
+      <cutBox tabList="{{tabList}}" loadType="{{loadType}}"
+        define="{{define}}"
+        id="cutBox"
+        class="cutBox"
+        defineParams="{{defineSceen}}"
+        otherTop="{{150}}"
+        slotTop="{{58}}"
+        nullObj="{{nullObj}}"
+        bindcutTab="loadTab"
+        bindscrollBottom="loadMore"
+        bindscrollTop="loadRefresh"
+        bindnull="toIssue"
+        bindsceenConfirm="sceenConfirm">
+        <view slot="essay_top">
+          <Screen data-key="essay" align="right" ext-screen="screen" isSearch="{{false}}" bindscreen="screenChange"/>
+        </view>
+        <view slot="group_top">
+          <Screen data-key="group" align="right" ext-screen="screen" isSearch="{{false}}" bindscreen="screenChange"/>
+        </view>
+        <!-- 文章 -->
+        <view class="switchItem" slot="essay">
+          <EssayListItem wx:for="{{essayObj.list}}" wx:key="index" info="{{item}}" index="{{index}}"/>
+        </view>
+        <!-- 悬赏 -->
+        <view class="switchItem" slot="group">
+          <GroupListItem wx:for="{{groupObj.list}}" wx:key="index" info="{{item}}"/>
+        </view>
+      </cutBox>
+    </view>
+  </view>
+</MoreUtil>

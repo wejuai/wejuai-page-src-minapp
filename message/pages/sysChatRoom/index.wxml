@@ -1,0 +1,42 @@
+<view class="chatRoomBox bgc_page">
+  <scroll-view class="chatRoomList"
+    scroll-into-view="{{scrollIntoScroll}}"
+    bindscroll="scrollScroll"
+    scroll-y>
+    <view class="chatListBox">
+      <!-- 顶部内容 -->
+      <view class="chatTop">
+        <!-- 更多历史 -->
+        <view wx:if="{{moreType == 1}}" class="moreIconBox fc_main" bindtap="getMore">
+          查看更多历史
+          <text class="moreIcon iconfont icon-iconfontshuangjiantou"></text>
+        </view>
+        <!-- 更多历史加载中 -->
+        <view wx:if="{{moreType == 2}}" class="moreLoadingBox">
+          
+        </view>
+      </view>
+      <!-- 消息内容列表 -->
+      <view class="list" wx:for="{{msgList}}" wx:key="index" data-a="{{'moreMark_' + item.id}}">
+        <view wx:if="{{moreMark == 'moreMark_' + item.id}}" id="{{moreMark}}"></view>
+        <!-- 消息时间 -->
+        <view class="msgTime fc_gray_font" wx:if="{{item.createdAt}}">{{item.msgTime}}</view>
+        <!-- 对方消息 -->
+        <view class="listItem adverse">
+          <view class="avaterBox">
+            <cImage src="/icon/logo/logo_100.png" ext-class="image" mode="aspectFit"/>
+          </view>
+          <view class="msgBox">
+            {{item.text}}
+            <view wx:if="{{!item.watch}}" class="markNew">NEW</view>
+            <view wx:if="{{!item.watch}}" class="markBtn fc_main"
+              data-id="{{item.id}}" data-idx="{{index}}"
+              bindtap="setMsgWatch">标记已读</view>
+          </view>
+        </view>
+      </view>
+      <!-- 底部定位点 -->
+      <view id="{{scrollIntoView}}"></view>
+    </view>
+  </scroll-view>
+</view>

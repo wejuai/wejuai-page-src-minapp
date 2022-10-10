@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "编辑文章",
+  "usingComponents": {
+    "Screen": "/compontents/screen/index",
+    "cEditor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "hf_editor": "/compontents/editor/editor"
+  }
+}

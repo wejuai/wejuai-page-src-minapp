@@ -1,0 +1,52 @@
+<wxs module="util" src="../../../wxs/util.wxs"/>
+
+<view class="container">
+  <ScrollMore id="scrollEssay"
+    loadType="{{1}}"
+    bindloadList="getList"
+    current="{{deal.current}}"
+    isTabber="{{false}}">
+    <Screen isSearch="{{false}}"
+      isSortType="{{false}}"
+      isWithdrawStatus="{{true}}"
+      bindscreen="getList"/>
+    <view class="list" wx:if="{{deal.list.length > 0}}">
+      <view class="withdraw_item bc_gray_tint"
+        wx:for="{{deal.list}}" wx:key="index">
+        <view class="detail_item_head" data-id="{{item.id}}"
+          bindtap="orderIdClick">
+          <view class="detail_item_head_code ellipsis">订单号：{{item.id}}</view>
+          <view class="detail_item_head_num {{item.income ? 'fc_main' : ''}}">{{item.income ? '+' : '-'}}{{item.integral}}</view>
+        </view>
+        <view class="detail_item_body">
+          <view>
+            <view class="detail_item_keys fc_gray_font">{{withdrawStatus[item.status]}}</view>
+            <view wx:if="{{item.status == 'PASS'}}" class="detail_item_keys fc_gray_font">{{item.tradeStatus ? "交易成功" : ""}}</view>
+            <!-- <view class="detail_item_keys fc_gray_font">支付方式：{{item.goodsName}}</view> -->
+          </view>
+          <view>
+            <view class="detail_item_keys fc_gray_font">时间：{{util.changeTime(item.createdAt, 2, '-')}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </ScrollMore>
+</view>
+
+
+<!-- <view class="withdraw_item"
+  wx:for="{{rechargeList}}" wx:key="index">
+  <view class="detail_item_head">
+    <view class="detail_item_head_code">订单号：{{item.id}}</view>
+    <view class="detail_item_head_num">-{{item.integral}}</view>
+  </view>
+  <view class="detail_item_body">
+    <view>
+      <view class="detail_item_keys">支付方式：{{orderTypes[item.type]}}</view>
+      <view class="detail_item_keys">状态：{{orderTypes[item.type]}}</view>
+    </view>
+    <view>
+      <view class="detail_item_keys">时间：{{util.changeTime(item.createdAt, 2, '-')}}</view>
+    </view>
+  </view>
+</view> -->

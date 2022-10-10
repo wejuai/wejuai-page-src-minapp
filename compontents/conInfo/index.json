@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Scroll": "/compontents/scroll/index",
+    "Comments": "/compontents/comments/index",
+    "Prompt": "/compontents/prompt/index"
+  }
+}

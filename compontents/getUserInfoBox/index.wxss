@@ -1,0 +1,14 @@
+.getUserInfoBox {
+  display: inline-block;
+  position: relative;
+}
+.getUserInfo_btn {
+  width: 100% !important;
+  padding: 0rpx;
+  margin-top: 0rpx;
+  margin-left: 0rpx;
+  margin-bottom: 0rpx;
+  margin-right: 0rpx;
+  background-color: transparent;
+  bottom: 0rpx;
+}

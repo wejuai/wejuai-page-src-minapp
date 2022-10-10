@@ -1,0 +1,263 @@
+<wxs module="util" src="../../wxs/util.wxs"/>
+
+<view class="ext-class">
+  <view class="coninfoBox" wx:if="{{backGroundShow}}">
+    <!-- 遮罩层 -->
+    <view class="maskLayer" animation="{{backGroundAn}}"
+      bindtap="close"></view>
+    <!-- 容器 -->
+    <view class="coninfoBody" wx:if="{{bodyShow}}"
+      animation="{{bodyAn}}">
+      <!-- 一级评论区 -->
+      <view class="coninfoStair">
+        <!-- 标题 -->
+        <view class="coninfoTitle">
+          <view class="iconCell" bindtap="close">
+            <image src="../../icon/icn_more.png"></image>
+          </view>
+          <view class="title">全部评论</view>
+        </view>
+        <!-- 列表 -->
+        <view class="coninfoList">
+          <Scroll id="scrollStair"
+            ext-class="scroll"
+            current="{{commentPage.page}}"
+            bindloadList="getCommentList">
+            <view>
+              <view class="commTotal">评论 {{commentPage.total}}</view>
+              <view class="coninfoItem bc_gray_tint table"
+                wx:for="{{commentList}}" wx:key="index"
+                data-idx="{{index}}"
+                bindtap="cutSub">
+                <!-- 用户信息 -->
+                <view class="row">
+                  <view class="cell coverCell">
+                    <image class="cover" src="{{item.senderInfo.headImage}}"/>
+                  </view>
+                  <view class="cell nameCell">
+                    <view class="name ellipsis">{{item.senderInfo.nickName}}
+                      <view wx:if="{{item.senderInfo.id == userInfo.id}}" class="author_tag">作者</view>
+                      <view class="p_m_r moreIcon" data-idx="{{index}}" catchtap="parentButtonShow">
+                        <text class="iconfont icon-gengduo"></text>
+                      </view>
+                    </view>
+                    <view class="text">{{item.text}}</view>
+                  </view>
+                </view>
+                <!-- 时间\点赞\子评论 -->
+                <view class="row">
+                  <view class="cell"></view>
+                  <view class="cell labelCell">
+                    <!-- 发布时间 -->
+                    <view class="createTime">{{util.changeTime(item.createdAt, 1, '-')}}<text wx:if="{{index < 2}}"> · 热评</text></view>
+                    <view class="auter_reply">作者有回复</view>
+                    <!-- 子评论数 -->
+                    <view class="subCommentBox">
+                      <image class="subIcon" src="../../icon/pinglun.png"></image>
+                      <text class="subNum">{{util.maxNum(item.subComments.totalElements)}}</text>
+                    </view>
+                    <!-- 点赞 -->
+                    <view class="starBox"
+                      data-idx="{{index}}" data-type="stair" catchtap="tabStar">
+                      <image wx:if="{{item.star}}" class="starIcon" src="../../icon/icn_zan_2.png"></image>
+                      <image wx:if="{{!item.star}}" class="starIcon" src="../../icon/pl_zan.png"></image>
+                      <text class="starNum">{{util.maxNum(item.starNum)}}</text>
+                    </view>
+                    <!-- 子评论 -->
+                    <view class="subList" wx:if="{{item.subComments.content.length > 0}}">
+                      <view class="coninfoItem table"
+                        wx:for="{{item.subComments.content}}"
+                        wx:for-item="_item"
+                        wx:for-index="_index"
+                        wx:key="_index"
+                        wx:if="{{_index < 2}}"
+                        data-idx="{{_index}}">
+                        <!-- 用户信息 -->
+                        <view class="row">
+                          <view class="cell coverCell">
+                            <image class="cover" src="{{_item.senderInfo.headImage}}"/>
+                          </view>
+                          <view class="cell nameCell">
+                            <view class="name ellipsis">{{_item.senderInfo.nickName}}
+                              <view wx:if="{{_item.senderInfo.id == userInfo.id}}" class="author_tag">作者</view>
+                            </view>
+                            <view class="text">{{_item.text}}</view>
+                          </view>
+                        </view>
+                        <!-- 时间\点赞\子评论 -->
+                        <view class="row">
+                          <view class="cell"></view>
+                          <view class="cell labelCell">
+                            <!-- 发布时间 -->
+                            <view class="createTime">{{util.changeTime(_item.createdAt, 1, '-')}}</view>
+                            <!-- 点赞 -->
+                            <view class="starBox"
+                              data-idx="{{_index}}"
+                              data-parentidx="{{index}}"
+                              data-type="sub" catchtap="tabStar">
+                              <image wx:if="{{_item.star}}" class="starIcon" src="../../icon/icn_zan_2.png"></image>
+                              <image wx:if="{{!_item.star}}" class="starIcon" src="../../icon/pl_zan.png"></image>
+                              <text class="starNum">{{util.maxNum(_item.starNum)}}</text>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                      <view class="subAll" data-idx="{{index}}" bindtap="cutSub"><text style="vertical-align: middle;">查看全部 {{item.subComments.totalElements}} 条回复</text><image class="com_right" src="../../icon/icon-more.png"></image></view>
+                    </view>
+                  </view>
+                </view>
+                <view class="com_buttonBox {{parentButtonBox.show[index] ? 'show' : ''}}" catchtap="buttonHide">
+                  <view>
+                    <view class="bnbx_item" data-type="COMMENT" data-id="{{item.id}}" catchtap="reportUtil">
+                      <image src="../../icon/icn_baojing.png"></image>
+                      <view>举报</view>
+                    </view>
+                    <view class="bnbx_item" wx:if="{{userInfo.id == parentButtonBox.data.senderInfo.id}}" catchtap="delCom">
+                      <image src="../../icon/icn_shanchu.png"></image>
+                      <view>删除</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </Scroll>
+        </view>
+        <!-- 输入框 -->
+        <view class="commentsBox">
+          <Comments placeholder="{{stairPlaceholder}}"
+            notUtil
+            bindinputConfirm="stairInputConfirm"/>
+        </view>
+      </view>
+      <!-- 二级评论区 -->
+      <view class="coninfoSub {{subCommentShow ? 'translate_x' : ''}}">
+        <!-- 标题 -->
+        <view class="coninfoTitle">
+          <view class="iconCell left" bindtap="cutStair">
+            <image src="../../icon/icn_more_1.png"></image>
+          </view>
+          <view class="title">评论回复</view>
+        </view>
+        <!-- 列表 -->
+        <view class="coninfoList scrollSub">
+          <Scroll id="scrollSub"
+            ext-class="scroll"
+            current="{{subCommentPage.page}}"
+            bindloadList="getSubCommentList">
+            <view>
+              <view class="parenCom table" data-idx="{{coninfoStair.idx}}" bindtap="selectSub">
+                  <!-- 用户信息 -->
+                  <view class="row">
+                    <view class="cell coverCell">
+                      <image class="cover" src="{{coninfoStair.senderInfo.headImage}}"/>
+                    </view>
+                    <view class="cell nameCell">
+                      <view class="name ellipsis">{{coninfoStair.senderInfo.nickName}}
+                        <view wx:if="{{coninfoStair.senderInfo.id == userInfo.id}}" class="author_tag">作者</view>
+                        <!-- <view class="p_m_r moreIcon">
+                          <text class="iconfont icon-gengduo"></text>
+                        </view> -->
+                      </view>
+                      <view class="text">{{coninfoStair.text}}</view>
+                    </view>
+                  </view>
+                  <!-- 时间\点赞\子评论 -->
+                  <view class="row">
+                    <view class="cell"></view>
+                    <view class="cell labelCell">
+                      <!-- 发布时间 -->
+                      <view class="createTime">{{util.changeTime(coninfoStair.createdAt, 1, '-')}}<text wx:if="{{index < 2}}"> · 热评</text></view>
+                      <view class="auter_reply">作者有回复</view>
+                      <!-- 子评论数 -->
+                      <view class="subCommentBox">
+                        <image class="subIcon" src="../../icon/pinglun.png"></image>
+                        <text class="subNum">{{util.maxNum(coninfoStair.subComments.totalElements)}}</text>
+                      </view>
+                      <!-- 点赞 -->
+                      <view class="starBox"
+                        data-idx="{{coninfoStair.idx}}" data-type="stair" catchtap="tabStar">
+                        <image wx:if="{{coninfoStair.star}}" class="starIcon" src="../../icon/icn_zan_2.png"></image>
+                        <image wx:if="{{!coninfoStair.star}}" class="starIcon" src="../../icon/pl_zan.png"></image>
+                        <text class="starNum">{{util.maxNum(coninfoStair.starNum)}}</text>
+                      </view>
+                    </view>
+                  </view>
+              </view>
+              <view class="coninfoItem table"
+                wx:for="{{subCommentList}}"
+                wx:key="index"
+                data-idx="{{index}}"
+                style="padding-top: {{index == 0?'20rpx':'0rpx'}};"
+                bindtap="selectSub">
+                <!-- 用户信息 -->
+                <view class="row">
+                  <view class="cell coverCell">
+                    <image class="cover" src="{{item.senderInfo.headImage}}"/>
+                  </view>
+                  <view class="cell nameCell">
+                    <view class="name ellipsis">{{item.senderInfo.nickName}}
+                      <view wx:if="{{item.senderInfo.id == userInfo.id}}" class="author_tag">作者</view>
+                      <view class="p_m_r moreIcon" data-idx="{{index}}" catchtap="subButtonShow">
+                        <text class="iconfont icon-gengduo"></text>
+                      </view>
+                    </view>
+                    <view class="text">{{item.text}}</view>
+                  </view>
+                </view>
+                <!-- 时间\点赞\子评论 -->
+                <view class="row">
+                  <view class="cell"></view>
+                  <view class="cell labelCell">
+                    <!-- 发布时间 -->
+                    <view class="createTime">{{util.changeTime(item.createdAt, 1, '-')}}<text wx:if="{{index < 2}}"> · 热评</text></view>
+                    <!-- 点赞 -->
+                    <view class="starBox"
+                      data-idx="{{index}}" data-type="sub" catchtap="tabStar">
+                      <image wx:if="{{item.star}}" class="starIcon" src="../../icon/icn_zan_2.png"></image>
+                      <image wx:if="{{!item.star}}" class="starIcon" src="../../icon/pl_zan.png"></image>
+                      <text class="starNum">{{util.maxNum(item.starNum)}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="com_buttonBox {{subButtonBox.show[index] ? 'show' : ''}}" catchtap="buttonHide">
+                  <view>
+                    <view class="bnbx_item" data-type="SUB_COMMENT" data-id="{{item.id}}" catchtap="reportUtil">
+                      <image src="../../icon/icn_baojing.png"></image>
+                      <view>举报</view>
+                    </view>
+                    <view class="bnbx_item" wx:if="{{userInfo.id == subButtonBox.data.senderInfo.id}}" catchtap="delComSub">
+                      <image src="../../icon/icn_shanchu.png"></image>
+                      <view>删除</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </Scroll>
+        </view>
+        <!-- 输入框 -->
+        <view class="commentsBox">
+          <Comments
+            id="subCommentsInput"
+            placeholder="{{subPlaceholder}}"
+            pre="{{coninfoSub && coninfoSub.id}}"
+            notUtil
+            bindinputConfirm="subInputConfirm">
+            <view slot="pre">@{{coninfoSub.senderInfo.nickName}}</view>
+          </Comments>
+        </view>
+      </view>
+    </view>
+  </view>
+  <Prompt
+    id="prompt"
+    mold="textarea"
+    placeholder="{{promptOption.placeholder}}"
+    confirmText="{{promptOption.confirmText}}"
+    cancelText="{{promptOption.cancelText}}"
+    callBackKey="{{promptOption.callBackKey}}"
+    label="{{promptOption.label}}"
+    inputType="{{promptOption.inputType}}"
+    type="{{promptOption.type}}"
+    bindconfirm="promptConfirm"/>
+</view>

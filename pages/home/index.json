@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "UniverseScroll": "/compontents/universe/universeScroll/index",
+    "wxc-dialog": "/compontents/dialog/dialog",
+    "Popup": "/compontents/popup",
+    "Prompt": "/compontents/prompt"
+  }
+}

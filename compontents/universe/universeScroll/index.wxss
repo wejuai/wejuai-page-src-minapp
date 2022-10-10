@@ -1,0 +1,128 @@
+.universeScroll {
+  width: calc( 100% + 20rpx );
+  height: calc( 100% + 20rpx );
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  -webkit-overflow-scrolling: touch;
+}
+.universeBox {
+  position: relative;
+  padding: 0rpx;
+  margin: 0rpx;
+  display: inline-block;
+}
+.universe {
+  position: relative;
+  display: inline-block;
+  /* overflow: hidden; */
+  padding: 0rpx !important;
+  margin: 0rpx !important;
+  vertical-align: top;
+}
+.universe .dev view {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+}
+.universe .dev view:nth-child(1) {
+  top: 0px; left: 0px;
+}
+.universe .dev view:nth-child(2) {
+  top: 0px; right: 0px;
+}
+.universe .dev view:nth-child(3) {
+  bottom: 0px; right: 0px;
+}
+.universe .dev view:nth-child(4) {
+  bottom: 0px; left: 0px;
+}
+.item_universe_background {
+  /* width: 100%;
+  height: 100%; */
+  width: calc( 100% + 2rpx );
+  height: calc( 100% + 2rpx );
+}
+.ios_map_loading_box {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+}
+.ios_map_loading {
+  position: absolute;
+}
+.ios_map_loading::after {
+  content: "正在加载新的空域";
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30rpx;
+  opacity: 0.6;
+}
+.ios_map_loading.left::after, .ios_map_loading.right::after {
+  width: 20rpx;
+}
+.ios_map_loading.top {
+  width: 100%;
+  height: 80rpx;
+  top: 0rpx;
+  left: 0rpx;
+  background-image: linear-gradient(to bottom, rgba(27, 154, 255, 0.5), rgba(27, 154, 255, 0));
+}
+.ios_map_loading.bottom {
+  width: 100%;
+  height: 80rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  background-image: linear-gradient(to top, rgba(27, 154, 255, 0.5), rgba(27, 154, 255, 0));
+}
+.ios_map_loading.left {
+  width: 80rpx;
+  height: 100%;
+  top: 0rpx;
+  left: 0rpx;
+  background-image: linear-gradient(to right, rgba(27, 154, 255, 0.5), rgba(27, 154, 255, 0));
+}
+.ios_map_loading.right {
+  width: 80rpx;
+  height: 100%;
+  top: 0rpx;
+  right: 0rpx;
+  background-image: linear-gradient(to left, rgba(27, 154, 255, 0.5), rgba(27, 154, 255, 0));
+}
+
+.target {
+  position: absolute;
+  z-index: 130;
+  transform: translate(-50%, -50%);
+}
+.target_icon {
+  font-size: 44rpx;
+}
+.targetShow {
+  animation: targetShowAn 300ms ease-in-out 0ms 1 alternate forwards;
+}
+.targetHide {
+  animation: targetHideAn 300ms ease-in-out 0ms 1 alternate forwards;
+}
+@keyframes targetShowAn {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes targetHideAn {
+  100% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的草稿",
+  "usingComponents": {
+    "EssayListItem": "/compontents/essayListItem/index",
+    "GroupListItem": "/compontents/groupListItem/index",
+    "AnswerListItem": "/compontents/answerListItem/index",
+    "Screen": "/compontents/screen/index"
+  }
+}

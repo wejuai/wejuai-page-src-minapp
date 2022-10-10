@@ -1,0 +1,9 @@
+<view class="ext-class" style="{{style}}">
+  <view class="box">
+    <image wx:if="{{defaultShow}}" class="default {{full ? 'full' : ''}}"
+      src="{{loadImg}}" mode="aspectFill"
+      animation="{{animation}}"></image>
+    <image class="img an_blur_in" src="{{src}}"
+      mode="{{mode}}" bindload="imgload"></image>
+  </view>
+</view>

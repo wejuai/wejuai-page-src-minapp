@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "Ceditor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "FollowBtn": "/compontents/followBtn/index",
+    "Star": "/compontents/star/index",
+    "Header": "/compontents/header/index"
+  }
+}

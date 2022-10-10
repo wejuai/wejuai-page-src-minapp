@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="detail fc_main" bindtap="toDetail">积分明细</view>
+  <view class="withdraw fc_main" bindtap="toWithdraw">提现明细</view>
+  <image class="logo" src="../../../images/integral.png"></image>
+  <view class="integral">{{integral}}</view>
+  <view class="title">我的积分</view>
+  <view class="btns">
+    <view class="btn bg_main fc_white" bindtap="rechargeClick">充值</view>
+    <view class="btn bc_main" bindtap="hasWithraw">提现</view>
+  </view>
+</view>
+<!-- 充值弹层 -->
+<Prompt
+  id="prompt"
+  title="{{prompt.title}}"
+  placeholder="{{prompt.placeholder}}"
+  confirmText="{{promot.confirmText}}"
+  callBackKey="{{prompt.callBackKey}}"
+  label="{{prompt.label}}"
+  bindconfirm="promptConfirm"/>
+  
+<!-- 手机号授权弹窗 -->
+<Popup id="popup"
+  title="手机号授权" openType="getPhoneNumber"
+  confirmText="授权" cancelText="暂不授权"
+  callBackKey="popupConfirm">
+  <block>提现需要授权手机号</block>
+</Popup>

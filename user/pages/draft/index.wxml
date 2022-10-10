@@ -1,0 +1,49 @@
+<!-- <view class="container bgc_page">
+  <ScrollMore id="scrollEssay" bindloadList="getEssayList" current="{{essay.current}}" isTabber="{{false}}">
+    <view class="list" wx:if="{{essay.list.length > 0}}">
+      <EssayListItem wx:for="{{essay.list}}" wx:key="index"
+        info="{{item}}" showAuthor="{{false}}" foot="{{false}}"
+        showHobby draft/>
+    </view>
+  </ScrollMore>
+</view> -->
+<view class="container bgc_page">
+  <!-- 头部切换 -->
+  <view class="topTabSwiper bbc_gray_tint">
+    <view class='tab fc_gray {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
+    文章
+      <view wx:if="{{currentData == 0}}" class="tabBorderActive bg_main"></view>
+    </view>
+    <view class='tab fc_gray {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>
+    悬赏回答
+      <view wx:if="{{currentData == 1}}" class="tabBorderActive bg_main"></view>
+    </view>
+  </view>
+  <!-- 列表 -->
+  <swiper current="{{currentData}}" class='swiper' style="height: calc( 100vh - 84rpx );" duration="300" bindchange="tabChange">
+    <!-- 文章列表 -->
+    <swiper-item>
+      <view class='swiper_con bgc_page'>
+        <ScrollMore id="scrollEssay" bindloadList="getEssayList" current="{{essay.current}}">
+          <view class="list" wx:if="{{essay.list.length > 0}}">
+            <EssayListItem wx:for="{{essay.list}}" wx:key="index"
+              info="{{item}}" showAuthor="{{false}}" foot="{{false}}"
+              showHobby draft/>
+          </view>
+        </ScrollMore>
+      </view>
+    </swiper-item>
+    <!-- 悬赏列表 -->
+    <swiper-item>
+      <view class='swiper_con bgc_page'>
+        <ScrollMore id="scrollGroup" bindloadList="getGroupList" current="{{group.current}}" pages="{{group.pages}}">
+          <view class="list" wx:if="{{group.list.length > 0}}">
+            <AnswerListItem wx:for="{{group.list}}" wx:key="index"
+              info="{{item}}" showAuthor="{{false}}" foot="{{false}}"
+              showHobby draft/>
+          </view>
+        </ScrollMore>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

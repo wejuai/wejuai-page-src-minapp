@@ -1,0 +1,1 @@
+<cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" disable_ratio="{{true}}" width="{{width}}" height="{{height}}" cut_left="{{0}}" cut_top="{{top}}" imgSrc="{{src}}" btns="{{btns}}" bindbtnClick="btnClick" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></cropper>

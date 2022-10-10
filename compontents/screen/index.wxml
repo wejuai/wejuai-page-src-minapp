@@ -1,0 +1,38 @@
+<view class="ext-screen">
+  <view class="screen {{align}}">
+    <!-- 搜索框 -->
+    <view wx:if="{{isSearch}}" class="search inline_block">
+      <text class="iconfont icon-soushuo searchIcon fc_gray" bindtap="searchClick"></text>
+      <input class="searchInput" placeholder="{{placeholder}}" bindinput="searchInput" bindconfirm="searchClick"></input>
+    </view>
+    <view wx:if="{{!isSearch && align != 'left'}}" class="label">筛选条件</view>
+    <!-- 插槽 -->
+    <slot></slot>
+    <!-- 排序类型 -->
+    <picker class="ext-picker inline_block" wx:if="{{isSortType}}" bindchange="changeSortType" range="{{sortTypeList}}"
+      range-key="title">
+      <view class="picker">{{sortType.title}}<image src="/icon/selectIcon.png"></image></view>
+    </picker>
+    <!-- 排序 -->
+    <picker class="ext-picker inline_block" wx:if="{{isSort}}" bindchange="changeSort" range="{{sortList}}" range-key="title">
+      <view class="picker">{{sort.title}}<image src="/icon/selectIcon.png"></image></view>
+    </picker>
+    <!-- 支付方向 -->
+    <picker class="ext-picker inline_block" wx:if="{{isIncome}}" bindchange="changeIncome" range="{{incomeList}}"
+      range-key="title">
+      <view class="picker bg_gray_tint fc_gray">{{income.title}}<text class="iconfont icon-shangxia sortIcon"></text></view>
+    </picker>
+    <!-- 提现状态 -->
+    <picker class="ext-picker inline_block" wx:if="{{isWithdrawStatus}}" bindchange="changeWithdrawStatus" range="{{withdrawStatusList}}" range-key="title">
+      <view class="picker bg_gray_tint fc_gray">{{withdrawStatus_ac.title}}<text class="iconfont icon-shangxia sortIcon"></text></view>
+    </picker>
+    <!-- 订单类型 -->
+    <picker class="ext-picker inline_block" wx:if="{{isOderType}}" bindchange="changeOrderType" range="{{orderTypesList}}" range-key="title">
+      <view class="picker bg_gray_tint fc_gray">{{orderTypes_ac.title}}<text class="iconfont icon-shangxia sortIcon"></text></view>
+    </picker>
+    <!-- 爱好 -->
+    <picker class="ext-picker inline_block" wx:if="{{isHobby}}" bindchange="changeHobby" range="{{hobbyList}}" range-key="name">
+      <view class="picker bg_gray_tint fc_gray">{{hobby.name}}<text class="iconfont icon-shangxia sortIcon"></text></view>
+    </picker>
+  </view>
+</view>

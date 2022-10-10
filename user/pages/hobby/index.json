@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "爱好",
+  "usingComponents": {
+    "Screen": "/compontents/screen/index"
+  }
+}

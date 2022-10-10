@@ -1,0 +1,42 @@
+<view class="ext-class">
+  <movable-area class="movableArea">
+    <slot name="content"></slot>
+    <!-- 悬浮按钮 -->
+    <movable-view class="movable bg_main" direction="all" bindtap="btnClick">
+      <text wx:if="{{!btnTxt || btnTxt == ''}}" class="addIcon iconfont icon-add {{ isOpen ? 'an_rotate' : '' }}"></text>
+      <text wx:if="{{btnTxt && btnTxt != ''}}">{{btnTxt}}</text>
+    </movable-view>
+    <!-- 弹起内容 -->
+    <view class="moreUtilContent" wx:if="{{backGroundShow}}">
+      <view class="moreUtilBackground"
+      animation="{{backGroundAn}}"
+      bindtap="close"></view>
+      <view class="moreBottomBox" wx:if="{{bodyShow}}"
+        animation="{{bodyAn}}"
+        bindtap="close">
+        <!-- 内容容器 -->
+        <view class="bodyBox">
+          <view class="bodyItem {{item.class}}"
+            wx:for="{{utilList}}" wx:key="index"
+            data-idx="{{index}}"
+            catchtap="toUtil">
+            <!-- <text class="utilItemIcon iconfont {{item.icon}}"></text> -->
+            <image class="utilItemImg" data-src="{{item.src}}" src="{{item.src}}"></image>
+            <view class="utilLabel">{{item.label}}</view>
+          </view>
+        </view>
+        <!-- 底部开关 -->
+        <view class="closeBox">
+          <view class="closeIcon" bindtap="close"><text class="iconfont icon-guanbi"></text></view>
+        </view>
+      </view>
+    </view>
+  </movable-area>
+</view>
+<!-- 关注 -->
+<Popup id="popup"
+  title="提示"
+  confirmText="关注" cancelText="暂不关注"
+  bindconfirm="popupConfirm">
+  <block>需要关注才可以操作哦~</block>
+</Popup>

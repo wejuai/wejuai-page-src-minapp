@@ -1,0 +1,12 @@
+<!-- <view class="customBar" style="height: calc( 80rpx + {{statusBarHeight}}px );">
+  <view class="tobackIcon iconfont icon-fanhui" bindtap="toBack"></view>
+  <image class="customBar_home_icon" src="{{home_icon}}" bindtap="toHome"></image>
+  <slot></slot>
+</view> -->
+<view class="customBar" style="padding-top: {{statusBarHeight}}px;">
+  <view class="customBox">
+    <view class="tobackIcon iconfont icon-fanhui" bindtap="toBack"></view>
+    <image class="customBar_home_icon" src="{{home_icon}}" bindtap="toHome"></image>
+    <slot></slot>
+  </view>
+</view>

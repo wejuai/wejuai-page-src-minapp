@@ -1,0 +1,236 @@
+<view slot="content">
+  <!-- 自定义导航栏 -->
+  <Header><view class="head_title ellipsis">{{group.title}}</view></Header>
+  
+  <scroll-view class="container"
+    bindscroll="scroll"
+    scroll-y>
+
+    <view class="body" style="padding-top: {{statusBarHeight + 52}}px">
+      <!-- 横幅 -->
+      <view wx:for="{{mark}}" wx:key="index" class="mark {{item.bgc}} {{item.orientation}}">{{item.title}}</view>
+
+      <!-- 作者信息 -->
+      <view class="authorBox">
+        <GetUserInfoBox userId="{{author.id}}">
+          <view class="authorCoverBox">
+            <image src="{{author.headImage}}" class="authorCover"/>
+          </view>
+          <view class="authorInfo">
+            <view class="authorName ellipsis">{{author.nickName}}</view>
+            <view class="authorInShort ellipsis fc_gray_font">{{author.inShort}}</view>
+          </view>
+        </GetUserInfoBox>
+        <FollowBtn otherId="{{author.id}}" ext-class="p_m_r attentionBtn" state="user"/>
+      </view>
+
+      <!-- 悬赏 -->
+      <view class="groupBox">
+        <view class="groupTitle ellipsis_2">{{group.title}}</view>
+        <image wx:if="{{group.coverUrl && group.coverUrl != ''}}"
+          class="groupCover" src="{{group.coverUrl}}"/>
+        <Ceditor ext-class="groupContent"
+          showImgResize="{{false}}"
+          html="{{group.text}}"
+          readOnly/>
+      </view>
+    </view>
+    
+    <!-- 备注信息 -->
+    <view class="markLabel fc_gray_font bc_gray_tint" id="markLabel">
+      发布于 {{group.createTime}} · 著作权归作者所有
+    </view>
+    <view class="perch bgc_page"></view>
+
+    <!-- 评论 & 回答 -->
+    <view class="footerFixed lh_shadow">
+      <!-- 回答 -->
+      <view class="footerBox">
+        <view class="footerTitle">回答</view>
+        <view class="footerBody" wx:if="{{answerHotList.length}}">
+          <view class="footerItem table"
+            wx:for="{{answerHotList}}" wx:key="index"
+            data-idx="{{index}}"
+            bindtap="answerClick">
+            <view class="row">
+              <view class="footerItemCover cell">
+                <cImage ext-class="commentCover" src="{{item.headImage}}"/>
+              </view>
+              <view class="commentTop cell">
+                <view class="commentName fc_gray">{{item.nickName}}</view>
+                <!-- 选定 -->
+                <text wx:if="{{item.selected}}" class="answer_selected fc_main iconfont icon-xuanding"></text>
+              </view>
+            </view>
+            <view class="row">
+              <view class="cell"></view>
+              <view class="footerItemText cell">
+                <view class="commentContent">{{item.inShort}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="footerLookAllBox tab" wx:if="{{answerTotal != 0 && answerTotal > answerHotList.length}}">
+            <view class="footerItemCover cell"></view>
+            <view class="cell footerLookAll bbc_main fc_main"
+              bindtap="openAnswerList">查看全部 {{answerTotal}} 条回答</view>
+          </view>
+        </view>
+        <view wx:if="{{!answerTotal}}" class="notComment fc_gray_font">~ 暂时还没有收到回答 ~</view>
+      </view>
+      <view class="perch bgc_page"></view>
+      <!-- 评论 -->
+      <view class="footerBox">
+        <view class="footerTitles">
+          <view class="footerTitle">评论</view>
+        </view>
+        <!-- 浮动评论框 -->
+        <view wx:if="{{fixInput}}"
+          class="footerInputBox table fix"
+          style="bottom: {{fixBottom}}px;">
+          <view class="row">
+            <view class="footerItemCover cell">
+              <image class="footerInputCover" src="{{userInfo.headImage}}"/>
+            </view>
+            <view class="footerInputCell cell">
+              <input class="footerInputInput bc_gray_tint"
+                placeholder="添加评论..."
+                placeholder-class="fc_gray_font"
+                value="{{commentText}}"
+                focus="{{fixInput}}"
+                adjust-position="{{false}}"
+                bindinput="commentInput"
+                bindblur="inputBlur"
+                bindfocus="inputFocus"
+                bindconfirm="publishCommost"></input>
+            </view>
+            <view class="footerInputIssue cell">
+              <view class="issue" bindtap="publishCommost">确定</view>
+            </view>
+          </view>
+        </view>
+        <!-- 评论框 -->
+        <view wx:else class="footerInputBox table">
+          <view class="row">
+            <view class="footerItemCover cell">
+              <image class="footerInputCover" src="{{userInfo.headImage}}"/>
+            </view>
+            <view class="footerInputCell cell" bindtap="openFixInput">
+              <view class="footerInputInput bc_gray_tint fc_gray_font">
+              {{commentText && commentText != '' ? commentText : '添加评论...'}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="footerBody" wx:if="{{commentHotList.length}}">
+          <view class="footerItem"
+            wx:for="{{commentHotList}}" wx:key="index"
+            data-idx="{{index}}"
+            bindtap="stairClick">
+            <view class="com_coverBox">
+              <GetUserInfoBox userId="{{item.senderInfo.id}}">
+                <image class="com_cover" src="{{item.senderInfo.headImage}}"></image>
+              </GetUserInfoBox>
+            </view>
+            <view class="com_conBox">
+              <view class="com_name">
+                {{item.senderInfo.nickName}}
+                <image class="com_more" src="/icon/more.png" catchtap="buttonShow"
+                  data-idx="{{index}}"></image>
+              </view>
+              <view class="com_text">{{item.text}}</view>
+              <view class="com_timeBox">
+                <view class="com_time">{{util.msgTime(item.createdAt)}}</view>
+                <view class="commentButtoms">
+                  <view class="button">
+                    <image src="/icon/pinglun.png" class="btnImg"></image>
+                    <text class="btnNum">{{item.subComments.totalElements}}</text>
+                  </view>
+                  <view class="button">
+                    <image wx:if="{{item.star}}" src="/icon/icn_zan_2.png" class="btnImg"></image>
+                    <image wx:if="{{!item.star}}" src="/icon/pl_zan.png" class="btnImg"></image>
+                    <text class="btnNum">{{item.starNum}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="footerLookAllBox" wx:if="{{commentTotal != 0 && commentTotal > commentHotList.length}}">
+            <view class="footerLookAll"
+              bindtap="openComment"><text style="vertical-align: middle;">查看全部评论</text><image class="com_right" src="/icon/right.png"></image></view>
+          </view>
+        </view>
+        <view wx:if="{{!commentTotal}}" class="notComment fc_gray_font">~ 恭喜，你是第一位评论者 ~</view>
+      </view>
+      <!-- 底部操作栏 -->
+      <view class="pageUtilBox lh_shadow">
+        <view class="moreUtil" bindtap="utilShow">
+          <image class="moreUtil_img" src="/icon/util.png"></image>
+          更多操作
+          <div class="moreBg" wx:if="{{showUtil}}" catchtap="utilHide"></div>
+          <view class="moreUtilList" wx:if="{{showUtil}}">
+            <view wx:for="{{utils}}" wx:key="index"
+              class="moreUtilItem" data-type="{{item.id}}" catchtap="utilClick">{{item.label}}</view>
+          </view>
+        </view>
+        <!-- 收藏 -->
+        <view class="utilItem" bindtap="articleTabCollect">
+          <image wx:if="{{collection}}" src="/icon/shoucang_active_1.png" class="utilIcon"></image>
+          <image wx:else src="/icon/shoucang.png" class="utilIcon"></image>
+          <view class="utilText">{{group.collectNum || 0}}</view>
+        </view>
+        <!-- 点赞 -->
+        <view class="utilItem" bindtap="articleTabStar">
+          <image wx:if="{{star}}" src="/icon/ziyuan_active_1.png" class="utilIcon"></image>
+          <image wx:else src="/icon/ziyuan.png" class="utilIcon"></image>
+          <view class="utilText">{{group.starNum || 0}}</view>
+        </view>
+        <!-- 阅读 -->
+        <view class="utilItem">
+          <image src="/icon/yuedu_active.png" class="utilIcon"></image>
+          <view class="utilText fc_gray_font">{{group.displayNum || 0}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<ConInfo id="coninfo" appId="{{groupid}}"
+  appType="REWARD_DEMAND"
+  stairObj="{{stairObj}}" bindcloseEnd="closeEnd"/>
+<AnswerList id="answerList"
+  appId="{{groupid}}"
+  appAuthorId="{{group.userId}}"/>
+<Prompt
+  id="prompt"
+  mold="textarea"
+  placeholder="{{promptOption.placeholder}}"
+  confirmText="{{promptOption.confirmText}}"
+  cancelText="{{promptOption.cancelText}}"
+  callBackKey="{{promptOption.callBackKey}}"
+  label="{{promptOption.label}}"
+  inputType="{{promptOption.inputType}}"
+  type="{{promptOption.type}}"
+  bindconfirm="promptConfirm"/>
+
+<view class="buttonBoxBg {{buttonBox.show ? 'show' : 'hide'}}" catchtap="buttonHide"></view>
+<view class="buttonBox {{buttonBox.show ? 'show' : 'hide'}}">
+  <view class="bnbx_title ellipsis">{{buttonBox.data.senderInfo.nickName}}: {{buttonBox.data.text}}</view>
+  <view class="bnbx_body">
+    <view class="bnbx_item" data-idx="{{buttonBox.idx}}" catchtap="stairClick">
+      <image src="../../../icon/icn_pinglun_2.png"></image>
+      <view>评论</view>
+    </view>
+    <view class="bnbx_item" catchtap="tabStar">
+      <image src="../../../icon/icn_zan_2.png"></image>
+      <view>{{buttonBox.data.star ? '取消点赞' : '点赞'}}</view>
+    </view>
+    <view class="bnbx_item" data-type="COMMENT" catchtap="reportUtil">
+      <image src="../../../icon/icn_baojing.png"></image>
+      <view>举报</view>
+    </view>
+    <view class="bnbx_item" wx:if="{{userInfo.id == buttonBox.data.senderInfo.id}}" catchtap="delCom">
+      <image src="../../../icon/icn_shanchu.png"></image>
+      <view>删除</view>
+    </view>
+  </view>
+  <view class="bnbx_foot" catchtap="buttonHide">取消</view>
+</view>

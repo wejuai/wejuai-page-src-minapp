@@ -1,0 +1,39 @@
+<view class="cutBox">
+  <view class="cutHeader bc_gray_tint" wx:if="{{tabList && tabList.length > 1}}">
+    <view class="cutHeaderTabList table">
+      <view class="row fc_gray_font">
+        <view class="cell cutHeaderItem {{active == index ? 'activeHeader bc_main' : ''}}" wx:for="{{tabList}}" wx:key="idnex" data-slot="{{item.slot}}" data-idx="{{index}}" bindtap="cutHeaderBind">{{item.label}}</view>
+        <view wx:if="{{showSceen}}" class="cutHeaderSceen cell" bindtap="showSceenClick">
+          <view class="cutHeaderSceenText">筛选</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <swiper class="cutSwiper" duration="{{300}}" circular style="height: {{scrollHeight}}; background: {{background}}" current="{{active}}" bindchange="cutChange">
+    <block class="cutSwiperItem" style="height: {{scrollHeight}}" wx:for="{{tabList}}" wx:key="index">
+      <swiper-item item-id="{{item.id}}">
+        <slot name="{{item.slot}}_top"></slot>
+        <scroll-view
+        scroll-y refresher-enabled
+        class="cutBody {{item.scrollClass}}" style="height: {{scrollHeight}};"
+        refresher-triggered="{{isRefresh}}"
+        data-id="{{item.id}}"
+        bindrefresherrefresh="scrollToupper"
+        bindscrolltolower="scrollTolower">
+          <view class="scrollInBox scroll-in-box" style="padding-bottom:{{slotTop}}px;">
+            <slot name="{{item.slot}}"></slot>
+            <loadItem wx:if="{{loadType[item.slot] && loadType[item.slot] != 'moreNull' && loadType[item.slot] != 'null'}}"/>
+            <loadItem wx:if="{{loadType[item.slot] && loadType[item.slot] == 'firstLoad'}}"/>
+            <loadItem wx:if="{{loadType[item.slot] && loadType[item.slot] == 'firstLoad'}}"/>
+            <view wx:if="{{loadType[item.slot] && loadType[item.slot] == 'moreNull'}}" class="moreNull fc_gray_font">我是有底线的</view>
+            <!-- 暂无数据 -->
+            <view class="dataToast fc_gray notData" wx:if="{{loadType[item.slot] && loadType[item.slot] == 'null' && nullObj.show}}">
+              <image class="null_img" src="/icon/null.png"></image>
+              <view style="font-size:26rpx;">{{nullObj.label}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

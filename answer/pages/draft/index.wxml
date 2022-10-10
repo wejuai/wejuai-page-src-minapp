@@ -1,0 +1,53 @@
+<view slot="content" class="container">
+  <!-- 悬赏内容 -->
+  <view class="editorBox">
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- 悬赏标题 --------
+    </view>
+    <view class="group_title">{{draft.title}}</view>
+  </view>
+  <!-- 简介 -->
+  <view class="editorBox">
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- 描述 --------
+    </view>
+    <textarea
+      class="inShortTextarea bg_gray_tint"
+      value="{{draft.inShort}}"
+      placeholder="回答描述：作者未选定回答前只可看到描述内的信息"
+      placeholder-class="fc_gray_font"
+      maxlength="{{200}}"
+      bindinput="inShortTextareaInput"
+      auto-height></textarea>
+  </view>
+  <!-- 内容 -->
+  <view class="editorBox">
+    <view class="editorStatusLabel fc_gray_tint">
+      ----- 回答正文 --------
+    </view>
+    <!-- <Editor ext-class="essayContent"
+      id="editor"
+      style="height: 800rpx;"
+      showImgResize="{{false}}"
+      html="{{draft.text}}"
+      bindinput="editorInput"/> -->
+    <hf_editor
+      html="{{draft.text}}"
+      bind:Content="getHtml"
+      bind:insertImage="insertImage" id="hf_editor"/>
+  </view>
+  <!-- 更多操作 -->
+  <view class="footerFixed">
+    <view class="pageUtilBox">
+      <view class="moreUtil" bindtap="utilShow">
+        <image class="moreUtil_img" src="/icon/util.png"></image>
+        更多操作
+        <div class="moreBg" wx:if="{{showUtil}}" catchtap="utilHide"></div>
+        <view class="moreUtilList" wx:if="{{showUtil}}">
+          <view wx:for="{{utils}}" wx:key="index"
+            class="moreUtilItem" data-type="{{item.id}}" catchtap="utilClick">{{item.label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

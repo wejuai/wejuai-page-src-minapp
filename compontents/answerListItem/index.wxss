@@ -1,0 +1,164 @@
+.box {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 10rpx;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  padding-bottom: 10rpx;
+}
+.box_in {
+  width: calc( 100% - 20rpx );
+  margin: auto;
+  background: #fff;
+  padding: 0 26rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+.head {
+  padding: 20rpx 0;
+  width: 100%;
+  position: relative;
+}
+.head_cover {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.head_cover_img {
+  width: 40rpx;
+  height: 40rpx;
+}
+.head_nickName {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200rpx;
+}
+.hobbyIcon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.hobby {
+  position: absolute;
+  top: 50%;
+  right: 100rpx;
+  padding: 20rpx;
+  transform: translate(0, -50%);
+}
+.hobby .iconfont {
+  font-size: 60rpx;
+  vertical-align: middle;
+}
+.ml_270 {
+  margin-left: 274rpx;
+}
+.hobby_name {
+  font-size: 26rpx;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  text-shadow: 4rpx 6rpx 10rpx #4DC4FF;
+  color: #fff;
+}
+.body {
+  width: 100%;
+}
+.body_integral {
+  padding: 10rpx 20rpx;
+  border: solid 1rpx;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+}
+.body_title_txt {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1B1B1B;
+  display: -webkit-bpx;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.body_content {
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.content_headImage {
+  width: 254rpx;
+  height: 110rpx;
+  vertical-align: top;
+  float: left;
+  border-radius: 12rpx;
+}
+.content_txt {
+  vertical-align: top;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #434343;
+}
+.foot {
+  width: 100%;
+  padding: 10rpx 0rpx 20rpx;
+}
+.foot_item {
+  width: 25%;
+  display: inline-block;
+}
+.foot_item .iconfont {
+  font-size: 32rpx;
+  vertical-align: middle;
+}
+.foot_item_num {
+  font-size: 24rpx;
+  font-weight: 400;
+  display: inline-block;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+.mark {
+  position: absolute;
+  width: 300rpx;
+  text-align: center;
+  padding: 10rpx;
+  color: #fff;
+  font-weight: 500;
+  font-size: 24rpx;
+  box-shadow: 1rpx 2rpx 10rpx rgba(138, 112, 8, 0.644);
+}
+.top {
+  top: 28rpx;
+}
+.bottom {
+  bottom: 28rpx;
+}
+.right {
+  right: -110rpx;
+}
+.left {
+  left: -110rpx;
+}
+.right.top, .left.bottom {
+  transform: rotate(45deg);
+}
+.left.top, .right.bottom {
+  transform: rotate(-45deg);
+}

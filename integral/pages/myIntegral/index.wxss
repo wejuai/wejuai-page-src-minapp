@@ -1,0 +1,67 @@
+.container {
+  padding-top: 118rpx;
+  position: relative;
+}
+.detail {
+  font-size: 30rpx;
+  font-family: "Source Han Sans CN";
+  font-weight: 500;
+  color: #1C1C1C;
+  padding: 10rpx 30rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  /* font-weight: bold; */
+}
+.withdraw {
+  font-size: 30rpx;
+  font-family: "Source Han Sans CN";
+  font-weight: 500;
+  color: #1C1C1C;
+  padding: 10rpx 30rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 60rpx;
+  /* font-weight: bold; */
+}
+.logo {
+  width: 312rpx;
+  height: 312rpx;
+  margin: auto;
+  display: block;
+}
+.title {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #C0C0C0;
+  line-height: 40rpx;
+}
+.integral {
+  text-align: center;
+  font-size: 120rpx;
+  font-weight: 500;
+  color: #444444;
+  line-height: 168rpx;
+}
+.btns {
+  width: 368rpx;
+  margin: auto;
+  margin-top: 104rpx;
+}
+.btn {
+  width: 100%;
+  padding: 20rpx 0rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+  border-radius: 42rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 40rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #7383FF;
+}
+.btn:last-child {
+  color: #444444;
+}

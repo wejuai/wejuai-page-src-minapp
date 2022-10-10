@@ -1,0 +1,129 @@
+.coninfoBox {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  z-index: 100;
+}
+.maskLayer {
+  position: absolute;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  opacity: 0.1;
+  z-index: 100;
+}
+.coninfoBody {
+  position: absolute;
+  width: 200%;
+  height: 70vh;
+  left: 0; bottom: 0;
+  transform: translate(0, 100%);
+  z-index: 110;
+  background: #fff;
+  overflow-x: hidden;
+}
+.coninfoStair, .coninfoSub {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+}
+.coninfoStair {
+  position: relative;
+}
+.coninfoSub {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  bottom: 0rpx;
+  z-index: 120;
+  transition: all 300ms ease;
+  background: #fff;
+}
+.translate_x{
+  transform: translate(-100%, 0);
+}
+.scroll scroll-view {
+  height: calc( 70vh - 180rpx ) !important;
+}
+.coninfoItem {
+  border-bottom: solid 2rpx;
+  transition: all 300ms;
+}
+.coninfoTitle {
+  padding: 20rpx 0rpx;
+  font-weight: 500;
+  border-bottom: solid 2rpx;
+}
+.coninfoList {
+  position: relative;
+}
+.iconCell {
+  width: 110rpx;
+  text-align: center;
+}
+.iconCell .icon {
+  font-size: 30rpx;
+}
+.title {
+  font-size: 30rpx;
+}
+.coverCell {
+  width: 80rpx;
+  padding: 27rpx 0rpx 0rpx 0rpx;
+  box-sizing: border-box;
+  text-align: right;
+}
+.cover {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+}
+.nameCell {
+  box-sizing: border-box;
+  padding: 22rpx 20rpx 20rpx;
+  vertical-align: middle;
+  position: relative;
+}
+.name {
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 60rpx;
+}
+.moreIcon {
+  right: 0rpx;
+  padding: 20rpx;
+}
+.textCell {
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+}
+.labelCell {
+  position: relative;
+  text-align: right;
+  padding: 20rpx 20rpx;
+  box-sizing: border-box;
+}
+.starBox {
+  display: inline-block;
+  width: 100rpx;
+  text-align: left;
+}
+.subCommentBox {
+  display: inline-block;
+}
+.createTime {
+  left: 20rpx;
+  font-size: 24rpx;
+}
+.starNum, .subNum {
+  padding-left: 4rpx;
+}
+.commentsBox {
+  position: absolute;
+  width: 100%;
+  left: 0; bottom: 0;
+}

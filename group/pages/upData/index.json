@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "编辑悬赏",
+  "usingComponents": {
+    "Screen": "/compontents/screen/index",
+    "Editor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "Popup": "/compontents/popup/index",
+    "hf_editor": "/compontents/editor/editor"
+  }
+}

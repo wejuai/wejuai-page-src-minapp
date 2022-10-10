@@ -1,0 +1,99 @@
+<view slot="content">
+  <!-- 自定义导航栏 -->
+  <Header><view class="head_title">回答详情</view></Header>
+  
+  <scroll-view class="container"
+    bindscroll="scroll"
+    scroll-y>
+
+    <view class="body" style="padding-top: {{statusBarHeight + 52}}px">
+      <!-- 作者信息 -->
+      <view class="authorBox">
+        <GetUserInfoBox userId="{{author.id}}">
+          <view class="authorCoverBox">
+            <image src="{{author.headImage}}" class="authorCover"/>
+          </view>
+          <view class="authorInfo">
+            <view class="authorName ellipsis">{{author.nickName}}</view>
+            <view class="authorInShort ellipsis fc_gray_font">{{author.inShort}}</view>
+          </view>
+        </GetUserInfoBox>
+        <FollowBtn otherId="{{author.id}}" ext-class="p_m_r attentionBtn" state="user"/>
+      </view>
+
+      <!-- 文章 -->
+      <view class="essayBox">
+        <textarea class="textarea"
+          value="{{answer.inShort}}"
+          auto-height
+          readOnly></textarea>
+        <Ceditor
+          wx:if="{{answer.selected}}"
+          ext-class="essayContent"
+          showImgResize="{{false}}"
+          html="{{answer.text}}"
+          readOnly/>
+      </view>
+    </view>
+    
+    <!-- 备注信息 -->
+    <view class="markLabel fc_gray_font bc_gray_tint" id="markLabel">
+      发布于 {{essay.createTime}} · 著作权归作者所有
+    </view>
+    <!-- <view class="perch bgc_page"></view> -->
+
+    <!-- 评价 -->
+    <view class="footerFixed lh_shadow"
+      wx:if="{{(userRole == 'group' || userRole == 'answer') && answer.selected && evaluateInfo.id}}">
+      <view class="footerBox">
+        <view class="footerTitle">评价</view>
+        <view class="footerBody table">
+          <view class="row">
+            <view class="cell footerBody_head_cell">
+              <cImage src="{{author.headImage}}" class="authorCover"/>
+            </view>
+            <view class="cell footerBody_inshort_cell">
+              <view class="authorName ellipsis">{{author.nickName}}</view>
+              <Star value="{{evaluateInfo.score}}" onlyRead/>
+              <view class="evaluate_content">{{evaluateInfo.content}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 编辑评价 -->
+    <view class="footerFixed lh_shadow"
+      wx:if="{{userRole == 'group' && answer.selected && !answer.selected && !evaluateInfo.id}}">
+      <view class="footerBox">
+        <view class="footerTitle">评价</view>
+        <view class="footerBody">
+          <view class="star_box">
+            <Star max="{{5}}" bindchangeNum="starChange"/>
+          </view>
+          <textarea class="textarea"
+            placeholder="填写对回答作者的评价"
+            placeholder-class="fc_gray_font"
+            bindinput="evaluateInput"
+            auto-height></textarea>
+            <view class="buttonBox" bindtap="submitEvaluate">
+              <view class="btn bg_main fc_white">评价</view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <!-- 更多操作 -->
+    <view class="footerFixed" wx:if="{{!hideUtils}}">
+      <view class="pageUtilBox">
+        <view class="moreUtil" bindtap="utilShow">
+          <image class="moreUtil_img" src="/icon/util.png"></image>
+          更多操作
+          <div class="moreBg" wx:if="{{showUtil}}" catchtap="utilHide"></div>
+          <view class="moreUtilList" wx:if="{{showUtil}}">
+            <view wx:for="{{utils}}" wx:key="index"
+              class="moreUtilItem" data-type="{{item.id}}" catchtap="utilClick">{{item.label}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

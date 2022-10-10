@@ -1,0 +1,168 @@
+<scroll-view class="universeScroll"
+    scroll-x="{{true}}"
+    scroll-y="{{true}}"
+    scroll-top="{{scroll.top}}"
+    scroll-left="{{scroll.left}}"
+    scroll-with-animation="{{scroll.withAnimation}}"
+    enhanced="{{true}}"
+    bounces="{{false}}"
+    show-scrollbar="{{false}}"
+    fast-deceleration="{{true}}"
+    fast-deceleration="{{true}}"
+    refresher-threshold="{{scroll.refresherThreshold}}"
+    bindscroll="bindscroll"
+    style="z-index: {{starInfoShow || utilShow ? 100 : 0}}"
+    >
+    <!-- bindtap="openUtil" -->
+    <!-- bindscrolltoupper="scrolltoupper" -->
+  <!-- 宇宙背景 -->
+  <view class="universeBox" style="width: {{universeObj.width}}px;height: {{universeObj.height}}px;">
+    <!-- 九宫格区域 -->
+    <!-- top left -->
+    <view class="universe" data-key="top_left" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[0][0] +','+map_middle_left.coordinate[0][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[1][0] +','+map_middle_left.coordinate[1][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[2][0] +','+map_middle_left.coordinate[2][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[3][0] +','+map_middle_left.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_top_left.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_top_left}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_top_left}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- top middle -->
+    <view class="universe" data-key="top_middle" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_top_middle.coordinate ? map_top_middle.coordinate[0][0] +','+map_top_middle.coordinate[0][1] : ''}}</view>
+        <view>{{map_top_middle.coordinate ? map_top_middle.coordinate[1][0] +','+map_top_middle.coordinate[1][1] : ''}}</view>
+        <view>{{map_top_middle.coordinate ? map_top_middle.coordinate[2][0] +','+map_top_middle.coordinate[2][1] : ''}}</view>
+        <view>{{map_top_middle.coordinate ? map_top_middle.coordinate[3][0] +','+map_top_middle.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_top_middle.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_top_middle}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_top_middle}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- top right -->
+    <view class="universe" data-key="top_right" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_top_right.coordinate ? map_top_right.coordinate[0][0] +','+map_top_right.coordinate[0][1] : ''}}</view>
+        <view>{{map_top_right.coordinate ? map_top_right.coordinate[1][0] +','+map_top_right.coordinate[1][1] : ''}}</view>
+        <view>{{map_top_right.coordinate ? map_top_right.coordinate[2][0] +','+map_top_right.coordinate[2][1] : ''}}</view>
+        <view>{{map_top_right.coordinate ? map_top_right.coordinate[3][0] +','+map_top_right.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_top_right.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_top_right}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_top_right}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- middle left -->
+    <view class="universe" data-key="middle_left" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[0][0] +','+map_middle_left.coordinate[0][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[1][0] +','+map_middle_left.coordinate[1][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[2][0] +','+map_middle_left.coordinate[2][1] : ''}}</view>
+        <view>{{map_middle_left.coordinate ? map_middle_left.coordinate[3][0] +','+map_middle_left.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_middle_left.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_middle_left}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_middle_left}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- middle middle -->
+    <view class="universe" data-key="middle_middle" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_middle_middle.coordinate ? map_middle_middle.coordinate[0][0] +','+map_middle_middle.coordinate[0][1] : ''}}</view>
+        <view>{{map_middle_middle.coordinate ? map_middle_middle.coordinate[1][0] +','+map_middle_middle.coordinate[1][1] : ''}}</view>
+        <view>{{map_middle_middle.coordinate ? map_middle_middle.coordinate[2][0] +','+map_middle_middle.coordinate[2][1] : ''}}</view>
+        <view>{{map_middle_middle.coordinate ? map_middle_middle.coordinate[3][0] +','+map_middle_middle.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_middle_middle.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_middle_middle}}" wx:key="index" id="{{item.id}}" info="{{item}}" id="{{item.id}}"  itemUniverse="{{map_middle_middle}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- middle right -->
+    <view class="universe" data-key="middle_right" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_middle_right.coordinate ? map_middle_right.coordinate[0][0] +','+map_middle_right.coordinate[0][1] : ''}}</view>
+        <view>{{map_middle_right.coordinate ? map_middle_right.coordinate[1][0] +','+map_middle_right.coordinate[1][1] : ''}}</view>
+        <view>{{map_middle_right.coordinate ? map_middle_right.coordinate[2][0] +','+map_middle_right.coordinate[2][1] : ''}}</view>
+        <view>{{map_middle_right.coordinate ? map_middle_right.coordinate[3][0] +','+map_middle_right.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_middle_right.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_middle_right}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_middle_right}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- bottom left -->
+    <view class="universe" data-key="bottom_left" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_bottom_left.coordinate ? map_bottom_left.coordinate[0][0] +','+map_bottom_left.coordinate[0][1] : ''}}</view>
+        <view>{{map_bottom_left.coordinate ? map_bottom_left.coordinate[1][0] +','+map_bottom_left.coordinate[1][1] : ''}}</view>
+        <view>{{map_bottom_left.coordinate ? map_bottom_left.coordinate[2][0] +','+map_bottom_left.coordinate[2][1] : ''}}</view>
+        <view>{{map_bottom_left.coordinate ? map_bottom_left.coordinate[3][0] +','+map_bottom_left.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_bottom_left.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_bottom_left}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_bottom_left}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- bottom middle -->
+    <view class="universe" data-key="bottom_middle" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_bottom_middle.coordinate ? map_bottom_middle.coordinate[0][0] +','+map_bottom_middle.coordinate[0][1] : ''}}</view>
+        <view>{{map_bottom_middle.coordinate ? map_bottom_middle.coordinate[1][0] +','+map_bottom_middle.coordinate[1][1] : ''}}</view>
+        <view>{{map_bottom_middle.coordinate ? map_bottom_middle.coordinate[2][0] +','+map_bottom_middle.coordinate[2][1] : ''}}</view>
+        <view>{{map_bottom_middle.coordinate ? map_bottom_middle.coordinate[3][0] +','+map_bottom_middle.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_bottom_middle.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_bottom_middle}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_bottom_middle}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+    <!-- bottom right -->
+    <view class="universe" data-key="bottom_right" style="width: {{universeObj.itemMapWidth}}px;height: {{universeObj.itemMapHeight}}px;" bindtap="openUtil">
+      <!-- 测试 -->
+      <view class="dev" wx:if="{{dev}}">
+        <view>{{map_bottom_right.coordinate ? map_bottom_right.coordinate[0][0] +','+map_bottom_right.coordinate[0][1] : ''}}</view>
+        <view>{{map_bottom_right.coordinate ? map_bottom_right.coordinate[1][0] +','+map_bottom_right.coordinate[1][1] : ''}}</view>
+        <view>{{map_bottom_right.coordinate ? map_bottom_right.coordinate[2][0] +','+map_bottom_right.coordinate[2][1] : ''}}</view>
+        <view>{{map_bottom_right.coordinate ? map_bottom_right.coordinate[3][0] +','+map_bottom_right.coordinate[3][1] : ''}}</view>
+      </view>
+      <!-- 区域的星空背景 -->
+      <image class="item_universe_background" src="{{map_bottom_right.background}}" loadImg="/images/universe/loadImage.png"/>
+      <!-- 每个区域显示的星球 -->
+      <Star wx:for="{{hobby_bottom_right}}" wx:key="index" id="{{item.id}}" info="{{item}}" itemUniverse="{{map_bottom_right}}" catchinfoShow="starInfoOpen" catchinfoHide="starInfoClose"/>
+    </view>
+  </view>
+  
+  <!-- 点击标记点 -->
+  <view class="target {{utilShow && !starInfoShow ? 'targetShow' : 'targetHide'}}"
+    wx:if="{{utilShow}}"
+    style="top: {{target.top}}px;left: {{target.left}}px">
+    <text class="target_icon fc_main an_fontFlicker iconfont icon-biaoji"></text>
+    <!-- <image class="target_icon fc_main an_fontFlicker iconfont icon-biaoji" src=""/> -->
+  </view>
+</scroll-view>
+<view class="ios_map_loading_box" wx:if="{{ios_map_loading_top.show || ios_map_loading_right.show || ios_map_loading_bottom.show || ios_map_loading_left.show}}">
+  <view class="ios_map_loading top" wx:if="{{ios_map_loading_top.show}}" animation="{{ios_map_loading_top.animation}}"></view>
+  <view class="ios_map_loading right" wx:if="{{ios_map_loading_right.show}}" animation="{{ios_map_loading_right.animation}}"></view>
+  <view class="ios_map_loading bottom" wx:if="{{ios_map_loading_bottom.show}}" animation="{{ios_map_loading_bottom.animation}}"></view>
+  <view class="ios_map_loading left" wx:if="{{ios_map_loading_left.show}}" animation="{{ios_map_loading_left.animation}}"></view>
+</view>
+
+<UniverseUtil id="universeUtil"
+  universeUtilObj="{{universeUtilObj}}"
+  bindtouserstar="toUserStar"
+  bindclosestar="starInfoClose"
+  bindskip="toSkip"/>

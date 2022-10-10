@@ -1,0 +1,37 @@
+<wxs module="util" src="../../wxs/util.wxs"/>
+<!-- 自定义导航栏 -->
+<cover-view class="customBar" style="height:{{statusBarHeight * 2 + 92}}rpx;line-height:{{statusBarHeight * 2 + 92}}rpx">
+    <cover-view class="customBarText">消息</cover-view>
+</cover-view>
+<view class="ab-full" style="top:{{statusBarHeight * 2 + 92}}rpx">
+  <ScrollMore bindloadList="getList" id="scrollMore" nullLabel="没有消息也是好消息">
+    <!-- 消息容器 -->
+    <view class="msgListBox">
+      <!-- 系统消息 -->
+      <!-- <view wx:if="{{newSysMsg.lastTime}}" class="msgItem" bindtap="toSysMessage"> -->
+      <view class="msgItem" bindtap="toSysMessage">
+        <view class="msgItemCover">
+          <cImage ext-class="msgCover" src="/icon/logo/logo_msg.png" mode="aspectFit"/>
+        </view>
+        <view class="msgItemText">
+          <view class="msgItemTextName ellipsis">为聚爱</view>
+          <view class="msgItemTextMsg msgItemTextMsgSys ellipsis">{{newSysMsg.lastText}}</view>
+          <view class="msgItemIextTime">{{util.msgTime(newSysMsg.lastTime)}}</view>
+          <view wx:if="{{newSysMsg.isNew || newSysMsg.unreadMsgNum > 0}}" class="newMarkSys gb_red">NEW</view>
+        </view>
+      </view>
+      <!-- 消息个体 -->
+      <view class="msgItem table" wx:for="{{msgList}}" wx:key="index" data-item="{{item}}" bindtap="toMessage">
+        <view class="msgItemCover">
+          <cImage ext-class="msgCover" src="{{item.avatar}}"/>
+        </view>
+        <view class="msgItemText">
+          <view class="msgItemTextName ellipsis">{{item.nickname}}</view>
+          <view class="msgItemTextMsg ellipsis">{{item.lastText}}</view>
+          <view class="msgItemIextTime">{{util.msgTime(item.lastTime)}}</view>
+          <view wx:if="{{item.isNew || item.unreadMsgNum > 0}}" class="newMark gb_red">{{item.unreadMsgNum > 9 ? '...' : item.unreadMsgNum}}</view>
+        </view>
+      </view>
+    </view>
+  </ScrollMore>
+</view>

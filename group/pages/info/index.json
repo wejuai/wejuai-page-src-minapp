@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "Comments": "/compontents/comments/index",
+    "Ceditor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "FollowBtn": "/compontents/followBtn/index",
+    "ConInfo": "/compontents/conInfo/index",
+    "AnswerList": "/compontents/answerList/index",
+    "Prompt": "/compontents/prompt/index",
+    "Header": "/compontents/header/index"
+  }
+}

@@ -1,0 +1,31 @@
+<view class="attention">
+  <!-- 头部 -->
+  <view class="head">
+    <view class="searchBox">
+        <input class="searchInput" type="text"
+        placeholder="搜索爱好" placeholder-class="searchInputPlaceholder" 
+        bindinput="searchInput"
+        value="{{searchVal}}"
+        bindconfirm="getList"></input>
+        <view class="searchIcon" bindtap="getList">
+          <image src="../../../icon/search_gray.png"></image>
+        </view>
+      </view>
+  </view>
+  <!-- 列表 -->
+  <ScrollMore id="scroll" bindloadList="getList" current="{{attention.current}}">
+    <view class="list" wx:if="{{attention.list.length > 0}}">
+      <view class="item bbc_gray_tint" wx:for="{{attention.list}}" wx:key="index" data-userid="{{item.id}}" bindtap="toOther">
+        <image class="avater" src="{{item.headImage}}" />
+        <view class="info">
+          <view class="name">{{item.nickName}}</view>
+          <view class="inShort fc_gray">dfasfsafsadfas</view>
+        </view>
+        <view class="option">
+          <view class="option_btn"
+          data-index="{{index}}" catchtap="toMessage">发消息</view>
+        </view>
+      </view>
+    </view>
+  </ScrollMore>
+</view>

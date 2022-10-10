@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "提现明细",
+  "usingComponents": {
+    "cutBox": "/compontents/cutBox/index",
+    "Screen": "/compontents/screen/index"
+  }
+}

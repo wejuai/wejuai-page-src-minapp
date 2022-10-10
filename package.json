@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "lottie-miniprogram": "^1.0.10"
+  },
+  "name": "wejuai-page-src-minapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xxxxxx"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

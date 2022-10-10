@@ -1,0 +1,18 @@
+/* product/commpents/star/index.wxss */
+.starBox {
+  width: 100%;
+  overflow: hidden;
+}
+.starBox>image {
+  display: inline-block;
+  vertical-align: middle;
+}
+.starBox>image:not(:last-child) {
+  margin-right: 10rpx;
+}
+.num {
+  color: rgb(126, 126, 126);
+  font-size: 30rpx;
+  vertical-align: middle;
+  font-weight: 500;
+}

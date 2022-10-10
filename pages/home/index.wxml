@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <cover-view class="customBar {{showUniverse ? 'customBarUniverse' : ''}}" style="height:{{statusBarHeight * 2 + 92}}rpx;line-height:{{statusBarHeight * 2 + 92}}rpx">
+    <cover-view class="customBarText">为聚爱</cover-view>
+  </cover-view>
+  <!-- 背景图片 -->
+  <image class="home_bg" src="/images/loadPage.png"/>
+  <image class="home_bg home_bg_white {{showUniverse ? 'home_bg_universe' : ''}}" style="z-index: {{showUniverse_an_end ? 10 : -10}};transform: translate({{bg_translate.x}}px, {{bg_translate.y}}px);" src="/images/loadPage_white.png"/>
+  <!-- 背景图片 -->
+  <UniverseScroll wx:if="{{showUniverse || (!showUniverse && showUniverse_an_end)}}" id="UniverseScroll"/>
+  <!-- 内容容器 -->
+  <view class="ab-full" style="top:{{statusBarHeight * 2 + 92}}rpx">
+    <!-- 顶部搜索容器 -->
+    <view class="top_box">
+      <!-- 搜索 -->
+      <view class="searchBox {{showUniverse ? 'searchUniverseBox' : ''}}">
+        <input class="searchInput" type="text"
+        placeholder="搜索爱好" placeholder-class="searchInputPlaceholder" 
+        bindinput="searchInput"
+        value="{{searchVal}}"
+        bindconfirm="search"></input>
+        <view class="searchIcon" bindtap="search">
+          <image wx:if="{{showUniverse}}" src="../../icon/search_gray.png"></image>
+          <image wx:else src="../../icon/search_black.png"></image>
+        </view>
+      </view>
+      <!-- 切换 -->
+      <view class="cut_box" bindtap="cutPattern">
+        <image src="/icon/cut_bg.png" class="cut_bg"></image>
+        <view class="cut_top_box">
+          <image src="/icon/cut_bg_active.png"
+            class="cut_bg_active {{showUniverse ? 'show' : ''}}"></image>
+          <image src="/icon/cut_top.png"
+            class="cut_top {{showUniverse ? 'show' : ''}}"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 内容 -->
+    <view class="content_box {{showUniverse ? 'hide' : ''}} {{showUniverse_an_end ? '' : 'none'}}"
+      style="height: calc( 100vh - {{statusBarHeight * 2 + 92 + 68}}rpx );">
+      <!-- 介绍 -->
+      <view class="introBox">
+        <text class="intro">{{intro}}</text>
+        <view class="apply_hobby" bindtap="applyHobby">申请爱好</view>
+      </view>
+      <!-- 爱好 -->
+      <view class="hobbyBox" bindtouchstart="touchStart"
+        bindtouchmove="touchMove" bindtouchend="touchEnd">
+        <view class="hobbyBoxLong" style="left: {{hobbyBox_left}}vw;">
+          <view wx:for="{{hobbyList}}" wx:key="idx" wx:for-index="idx"
+            wx:for-item="hobby" class="hobby_item">
+            <view wx:for="{{hobby}}" class="hobby" wx:key="index" data-hobby="{{item}}" bindtap="toHobby">
+              <view class="hobbyTitle ellipsis">{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="hobby_dots">
+          <view wx:for="{{hobbyList}}" wx:key="index" class="dot {{hobbyBoxLong_idx == index ? 'active' : ''}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 坐标收藏 && 修改 -->
+<Popup
+  id="popup"
+  title="是否继续上次浏览位置"
+  confirmText="继续"
+  callBackKey="不继续"
+  bindconfirm="popupConfirm"/>
+<!-- 申请爱好弹窗 -->
+<Prompt
+  id="prompt"
+  title="申请爱好"
+  mold="textarea"
+  placeholder="请输入需要申请的爱好名称，并简单介绍这个爱好"
+  moreInput="{{moreInput}}"
+  confirmText="申请"
+  bindconfirm="applyHobbyConfirm"/>

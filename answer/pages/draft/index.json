@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "编辑悬赏回答草稿",
+  "usingComponents": {
+    "Editor": "/compontents/cEditor/index",
+    "MoreUtil": "/compontents/moreUtil/index",
+    "hf_editor": "/compontents/editor/editor"
+  }
+}

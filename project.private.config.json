@@ -1,0 +1,152 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "编辑资料",
+          "pathName": "user/pages/userInfo/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "图片剪切",
+          "pathName": "pages/cropper/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "积分",
+          "pathName": "integral/pages/myIntegral/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收藏列表",
+          "pathName": "user/pages/collect/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "pages/user/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "文章列表",
+          "pathName": "essay/pages/list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的关注",
+          "pathName": "user/pages/attention/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "他人用户中心",
+          "pathName": "user/pages/otherInfo/index",
+          "query": "id= 5f682ef88fa24d0001647dbd",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "聊天页",
+          "pathName": "message/pages/chatRoom/index",
+          "query": "id=5fb8f8af590ecf00016a085e",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "消息列表",
+          "pathName": "pages/message/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "文章详情",
+          "pathName": "essay/pages/info/index",
+          "query": "essayid=6080d93ba71183256fcae150",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的草稿",
+          "pathName": "user/pages/draft/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 12,
+          "name": "古玩-悬赏",
+          "pathName": "group/pages/info/index",
+          "query": "groupid=5ff2d1e0a554c613b86542d6",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "爱好列表",
+          "pathName": "user/pages/hobby/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "设置",
+          "pathName": "setting/pages/setting/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/home/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "互联网",
+          "pathName": "subIndex/pages/home/index",
+          "query": "hobbyid=it",
+          "scene": null
+        },
+        {
+          "name": "创建文章",
+          "pathName": "essay/pages/upData/index",
+          "query": "hobbyid=it&type=create",
+          "scene": null
+        },
+        {
+          "name": "进入小程序",
+          "pathName": "/pages/pageLoad/index",
+          "query": "share=true&performance=HIGH&x=-21.11&y=-22.56",
+          "scene": null
+        },
+        {
+          "name": "subIndex/pages/home/index",
+          "pathName": "subIndex/pages/home/index",
+          "query": "hobbyid=test",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

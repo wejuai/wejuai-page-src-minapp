@@ -1,0 +1,73 @@
+.cutBox {
+  width: 100%;
+}
+.cutHeader {
+  width: 100%;
+  height: 126rpx;
+  background-color: #ffffff;
+}
+.cutHeaderTabList {
+  width: 100%;
+  height: 100%;
+}
+.cutHeaderItem {
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  transition: all 300;
+  font-weight: bold;
+  padding-top: 56rpx;
+}
+.cutHeaderSceen {
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.null_img {
+  width: 584rpx;
+  height: 538rpx;
+}
+.cutHeaderSceenText {
+  border-left: solid 2rpx #95AFC0;
+  line-height: 40rpx;
+}
+.activeHeader {
+  position: relative;
+  color: #000;
+}
+.activeHeader::before {
+  content: '';
+  position: absolute;
+  bottom: 0rpx;
+  left: 50%;
+  width: 40rpx;
+  height: 8rpx;
+  border-radius: 8rpx;
+  transform: translate(-50%, 0);
+  background: rgba(115, 131, 255, 1);
+}
+.cutBody {
+  box-sizing: border-box;
+}
+.scrollInBox {
+  /* padding: 36rpx; */
+}
+.issueBtn {
+  display: inline-block;
+  margin-top: 92rpx;
+}
+.dataToast {
+  font-size: 20rpx;
+  text-align: center;
+  padding: 20rpx 0rpx;
+}
+.notData {
+  font-size: 30rpx;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dataToast .iconfont {
+  font-size: 200rpx;
+}

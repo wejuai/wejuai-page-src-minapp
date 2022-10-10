@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "消息",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "comments": "/compontents/comments/index",
+    "GetUserInfoBox": "/compontents/getUserInfoBox/index",
+    "Header": "/compontents/header/index"
+  }
+}

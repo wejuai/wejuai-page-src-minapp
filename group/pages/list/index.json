@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的悬赏",
+  "usingComponents": {
+    "GroupListItem": "/compontents/groupListItem/index",
+    "Screen": "/compontents/screen/index"
+  }
+}

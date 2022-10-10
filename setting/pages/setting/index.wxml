@@ -1,0 +1,27 @@
+<view class="container">
+  <!-- 更改手机号 -->
+  <view class="set_item bc_gray_tint">
+    <view class="set_label">更改手机号</view>
+    <view class="set_value">{{phone}}</view>
+    <text class="iconfont icon-icon-arrow-right2-copy p_m_r"></text>
+  <button class="set_label ab-full"
+    open-type="getPhoneNumber"
+    bindgetphonenumber="getPhoneNumber"></button>
+  </view>
+  <!-- 联系客服 -->
+  <view class="set_item bc_gray_tint">
+    <view class="set_label">联系客服</view>
+    <view class="set_value"></view>
+    <text class="iconfont icon-icon-arrow-right2-copy p_m_r"></text>
+  <button class="set_label ab-full"
+    open-type="contact"
+    bindcontact="getContact"></button>
+  </view>
+  <!-- <view class="set_item bc_gray_tint" bindtap="switchConcise">
+    <view wx:if="{{userInfo.performance == 'LOW'}}"
+      class="set_label">切换为探索模式</view>
+    <view wx:else
+      class="set_label">切换为简洁模式</view>
+    <text class="iconfont icon-icon-arrow-right2-copy p_m_r"></text>
+  </view> -->
+</view>

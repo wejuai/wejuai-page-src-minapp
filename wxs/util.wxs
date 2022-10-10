@@ -1,0 +1,265 @@
+var numInt = function (str) {
+  return parseInt(str)
+}
+
+/**
+ * 数字超出隐藏
+ * @param num 
+ * @param max 
+ */
+var maxNum = function (num, max) {
+  max = max || 99;
+  if(num - max > 0) {
+    return max + '+'
+  }
+  return num;
+} 
+
+/**
+ * 数字缩进
+ * @param num 
+ */
+var numAbb = function(n) {
+  if(isNaN(n)) {
+    return 0;
+  }
+	if(n < 1000) {
+		return n;
+  }
+	else if(n >= 10000000) {
+		return (n / 10000000).toFixed(2) + 'kw';
+	}
+	else if(n >= 1000000) {
+		return (n / 1000000).toFixed(2) + 'bw';
+	}
+	else if(n >= 10000) {
+		return (n / 10000).toFixed(2) + 'w';
+	}
+	else if(n >= 1000) {
+		return (n / 1000).toFixed(2) + 'k';
+	}
+}
+
+/**
+ * 日期转化格式
+ * @param t 日期
+ * @param i 返回类型
+ * @param s 间隔符
+ */
+var changeTime = function (t, i, s) {
+  if (!t || t == '' || t < 10000) {
+    return '暂无'
+  }
+
+  if (t.constructor == 'String'){
+    var reg = getRegExp("-", "g");
+    t = t.replace(reg, '/');
+  }
+
+  var time = getDate(t);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+  var hours = time.getHours();
+  var minutes = time.getMinutes();
+  var seconds = time.getSeconds();
+
+  year = year < 0 || isNaN(year) ? 0 : year;
+  month = month < 0 || isNaN(month) ? 0 : month;
+  date = date < 0 || isNaN(date) ? 0 : date;
+  hours = hours < 0 || isNaN(hours) ? 0 : hours;
+  minutes = minutes < 0 || isNaN(minutes) ? 0 : minutes;
+  seconds = seconds < 0 || isNaN(seconds) ? 0 : seconds;
+
+  year = year < 10 ? '0' + year : year;
+  month = month < 10 ? '0' + month : month;
+  date = date < 10 ? '0' + date : date;
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  
+  var ss = s ? [s, s] : ['年', '月', '日'];
+
+  if (!i) {
+    return (
+      year + ss[0] +
+      month + ss[1] +
+      date + " " +
+      hours + ":" +
+      minutes
+    )
+  } 
+  else if (i == 1) {
+    return (
+      year + ss[0] +
+      month + ss[1] +
+      date
+    )
+  }
+  else if (i == 2) {
+    return (
+      year + ss[0] +
+      month + ss[1] +
+      date + " " +
+      hours + ":" +
+      minutes + ":" +
+      seconds
+    )
+  }
+  else if (i == 3) {
+    return (
+      year + ss[0] +
+      month + ss[1] +
+      date + " " +
+      hours + ":" +
+      minutes
+    )
+  }
+  else if (i == 4) {
+    return (
+      month + ss[1] +
+      date
+    )
+  }
+}
+
+/**
+ * 日期转化为聊天格式
+ * @param t 日期 
+ */
+var msgTime = function(t) {
+  if (!t || t == '' || t < 10000) {
+    return '暂无'
+  }
+
+  if(getDate(t) == "Invalid Date") {
+    t = t.replace(getRegExp('-', 'g'), '/');
+  }
+  var time = getDate(t);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+  var day = time.getDay();
+  var hours = time.getHours();
+  var minutes = time.getMinutes();
+  var seconds = time.getSeconds();
+
+  var nTime = getDate();
+  var nYear = nTime.getFullYear();
+  var nMonth = nTime.getMonth() + 1;
+  var nDate = nTime.getDate();
+  var nDay = nTime.getDay();
+  var nHours = nTime.getHours();
+  var nMinutes = nTime.getMinutes();
+  var nSeconds = nTime.getSeconds();
+  var capitals = { '1': "一", '2': "二", '3': "三", '4': "四", '5': "五", '6': "六", '7': "日" };
+  var s = '';
+  // 当天
+  if(
+    year == nYear &&
+    month == nMonth &&
+    date == nDate
+  ) {
+    if(hours <= 12) {
+      s = '上午 ' + hours + ':' + msgTime_0(minutes);
+    } else {
+      s = '下午 ' + (hours - 12) + ':' + msgTime_0(minutes);
+    }
+  }
+  // 昨天
+  else if(
+    year == nYear &&
+    month == nMonth &&
+    date == (nDate - 1)
+  ) {
+    s = '昨天'; 
+  }
+  // 本周
+  else if(
+    year == nYear &&
+    date > (nDate - 7)
+  ) {
+    s = '星期' + capitals[day + '']; 
+  }
+  // 日期
+  else {
+    s = year + '/' + msgTime_0(month) + '/' + msgTime_0(date)
+  }
+
+  return s;
+}
+var msgTime_0 = function(s) {
+  if(s < 10) {
+    return '0' + s;
+  }
+  return s;
+}
+
+/**
+ * 添加数据为空的提示
+ * @param data 传入数据
+ * @param text 空的提示文字
+ */
+var dataNull = function (data, text) {
+  text = text || '什么都没有 ~_~';
+
+  if(!data || data == '' || data == 'null') {
+    return text;
+  }
+  return data
+}
+
+/**
+ * findIndex
+ * @param list 数组
+ * @param str  查询
+ */
+var findIndex = function(list, str) {
+  list = list || [];
+  
+  var d = -1;
+  for(var i = 0; i < list.length; i++) {
+    if(list[i] == str) {
+      d = i
+    }
+  }
+  return d;
+}
+
+function each(obj, cb) {
+  var str = JSON.stringify(obj)
+  var reg = getRegExp('"(\w|-|_)+":', 'g')
+  var matchArr = str.match(reg)
+  if (matchArr) {
+    for (var i = 0; i < matchArr.length; i++) {
+      var objKey = matchArr[i]
+      objKey = objKey.substring(1)
+      objKey = objKey.replace('":', '')
+      cb && cb(objKey, obj[objKey])
+    }
+  }
+}
+/**
+ * findObjIndex
+ * @param list 数组
+ * @param obj  查询
+ */
+var findObjIndex = function(list, obj) {
+  list = list || [];
+  var idx = -1;
+  list.map(function(o, i) {
+    each(obj, function(key) {
+      idx = i;
+      if(o[key] != obj[key]) {
+        idx = -1
+      }
+    });
+  });
+  return idx;
+}
+
+module.exports = {
+  numInt: numInt, maxNum: maxNum, changeTime: changeTime,
+  dataNull: dataNull, findIndex: findIndex, findObjIndex: findObjIndex,
+  msgTime: msgTime, numAbb: numAbb
+}

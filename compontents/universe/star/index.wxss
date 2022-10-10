@@ -1,0 +1,115 @@
+.star {
+  position: absolute;
+  line-height: 0rpx;
+}
+.star_image_background,
+.star_image_texture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+.star_image_background {
+  z-index: 120;
+}
+.star_image_background.star_bg_1,
+.star_image_background.star_bg_2,
+.star_image_background.star_bg_3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}
+.star_bg_1 {
+  animation: star_bg_1 500ms ease-in 600ms 1 normal forwards;
+}
+.star_bg_2 {
+  animation: star_bg_2 500ms ease-in 600ms 1 normal forwards;
+}
+.star_bg_3 {
+  animation: star_bg_3 500ms ease-in 600ms 1 normal forwards;
+}
+@keyframes star_bg_1 {
+  0% { opacity: 0; width: 100%; height: 100%; }
+  100% { opacity: 0.15; width: 110%; height: 110%; }
+}
+@keyframes star_bg_2 {
+  0% { opacity: 0; width: 100%; height: 100%; }
+  100% { opacity: 0.1; width: 125%; height: 125%; }
+}
+@keyframes star_bg_3 {
+  0% { opacity: 0; width: 100%; height: 100%; }
+  100% { opacity: 0.05; width: 140%; height: 140%; }
+}
+.star_image_texture {
+  z-index: 121;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.star_image_texture.show {
+  opacity: 0.99999;
+}
+.starInfoBox {
+  position: fixed;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  z-index: 120;
+}
+.moreUtilBackground {
+  position: absolute;
+  width: 100%;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+}
+.starInfo {
+  position: absolute;
+  z-index: 130;
+}
+.starInfoShow {
+  animation: an_starInfoShow 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.starInfoHide {
+  animation: an_starInfoHide 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes an_starInfoShow
+{
+  40% {
+    top: 15vw;
+    left: 15vw;
+  }
+  100% {
+    top: calc( ( 100vh - 70vw ) / 2 );
+    left: 15vw;
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+@keyframes an_starInfoHide
+{
+  0% {
+    top: calc( ( 100vh - 70vw ) / 2 );
+    left: 15vw;
+    width: 70vw;
+    height: 70vw;
+  }
+  70% {
+    top: 15vw;
+    left: 15vw;
+    width: 10vw;
+    height: 10vw;
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+  }
+}

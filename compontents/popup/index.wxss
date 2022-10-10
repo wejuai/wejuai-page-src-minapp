@@ -1,0 +1,97 @@
+.promptContent {
+  position: fixed;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 200;
+}
+.promptBackground {
+  position: absolute;
+  width: 100%;
+  top: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
+}
+.body_title {
+  padding: 66rpx 0rpx 33rpx;
+  text-align: center;
+  color: #444444;
+  font-weight: bold;
+}
+.promptBottomBox {
+  position: absolute;
+  top: 30%;
+  left: 15vw;
+  z-index: 30;
+  width: 70vw;
+  background: #fff;
+  padding: 0rpx 64rpx;
+  color: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  opacity: 0;
+}
+.body_content_input {
+  border: solid 2rpx;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+  border-radius: 10rpx;
+}
+.body_content_textarea {
+  border: solid 2rpx;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  width: 100%;
+}
+.body_foot .cell:first-child {
+  padding-right: 20%;
+  text-align: right;
+}
+.body_foot .cell:last-child {
+  padding-left: 20%;
+  text-align: left;
+}
+.cell {
+  width: 50%;
+  position: relative;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #C0C0C0;
+  white-space: nowrap;
+}
+.body_foot_button {
+  border: none !important;
+  background: none !important;
+  position: absolute;
+  top: 0rpx; right: 0rpx;
+  bottom: 0rpx; left: 0rpx;
+}
+button:not([size='mini']) {
+  width: 100%;
+  color: #4DC4FF;
+}
+.body_foot {
+  border-top: solid 1rpx rgba(247, 247, 247, 1);
+}
+.body_content {
+  width: 100%;
+  padding-bottom: 33rpx;
+  box-sizing: border-box;
+  color: #444444;
+  text-align: center;
+}
+.body_content_label {
+  width: 100%;
+  text-align: left;
+  font-size: 22rpx;
+  margin-top: 20rpx;
+}

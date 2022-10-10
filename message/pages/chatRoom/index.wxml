@@ -1,0 +1,70 @@
+<wxs module="util" src="../../../wxs/util.wxs"/>
+<!-- 自定义导航栏 -->
+<Header><view class="head_title ellipsis">{{adverse.nickname}}</view></Header>
+<view class="chatRoomBox" style="padding-top: {{statusBarHeight * 2 + 92}}rpx;">
+  <scroll-view class="chatRoomList"
+    scroll-into-view="{{scrollIntoScroll}}"
+    bindscroll="scrollScroll"
+    scroll-y>
+    <view class="chatListBox">
+      <!-- 顶部内容 -->
+      <view class="chatTop">
+        <!-- 更多历史 -->
+        <view wx:if="{{moreType == 1}}" class="moreIconBox fc_main" bindtap="getMore">
+          查看更多历史
+          <text class="moreIcon iconfont icon-iconfontshuangjiantou"></text>
+        </view>
+        <!-- 更多历史加载中 -->
+        <view wx:if="{{moreType == 2}}" class="moreLoadingBox">
+          
+        </view>
+      </view>
+      <!-- 消息内容列表 -->
+      <view class="list" wx:for="{{msgList}}" wx:key="index" data-a="{{'moreMark_' + item.id}}" data-b="{{moreMark}}">
+        <view wx:if="{{moreMark == 'moreMark_' + item.id}}" id="{{moreMark}}"></view>
+        <!-- 消息时间 -->
+        <view class="msgTime fc_gray_font" wx:if="{{item.msgTime}}">{{util.msgTime(item.msgTime)}}</view>
+        <!-- 本人消息 -->
+        <view  wx:if="{{item.sender == personal.id}}" class="listItem personal">
+          <view class="msgBox gb_purple {{item.mediaType == 'IMAGE' ? 'msgImgBox' : ''}}">
+            <image wx:if="{{item.mediaType == 'IMAGE'}}"
+              mode="aspectFill" class="image"
+              data-src="{{CONFIG.url.media + '/' + item.ossKey}}"
+              src="{{CONFIG.url.media + '/' + item.ossKey}}"
+              bindtap="previewImg"/>
+            <text wx:else>{{item.text}}</text>
+          </view>
+          <view class="avaterBox">
+            <image class="image" src="{{personal.avatar}}"/>
+          </view>
+        </view>
+        <!-- 对方消息 -->
+        <view wx:else class="listItem adverse">
+          <view class="avaterBox">
+            <GetUserInfoBox userId="{{adverse.id}}">
+              <image class="image" src="{{adverse.avatar}}"/>
+            </GetUserInfoBox>
+          </view>
+          <view class="msgBox bg_gray_tint {{item.mediaType == 'IMAGE' ? 'msgImgBox' : ''}}">
+              <image wx:if="{{item.mediaType == 'IMAGE'}}"
+                mode="aspectFill" class="image"
+                data-src="{{CONFIG.url.media + '/' + item.ossKey}}"
+                src="{{CONFIG.url.media + '/' + item.ossKey}}"
+                bindtap="previewImg"/>
+            <text wx:else>{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 底部定位点 -->
+      <view id="{{scrollIntoView}}"></view>
+      <!-- 底部新消息提示 -->
+      <view wx:if="{{showNewBottom}}" class="newMsgBottom">
+        <text class="newMsgBottomIcon fc_main iconfont icon-biaoqiankuozhan_xiaoxi-152" bindtap="scrollToBottom"></text>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 聊天框 -->
+  <view class="chatRoomComment">
+    <comments bindinputConfirm="inputConfirm"/>
+  </view>
+</view>

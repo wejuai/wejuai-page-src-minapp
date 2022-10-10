@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<wxs src="../../../wxs/util.wxs" module="util" />
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <Header home_icon="/icon/toHome.png"></Header>
+  <!-- 背景 -->
+  <view class="cover">
+    <image class="cover_img" src="../../../icon/user/cover.png" mode="aspectFill"/>
+  </view>
+  <!-- 简介 -->
+  <view class="intro">
+    <view class="intro_left">
+      <view class="intro_avater">
+        <image class="intro_avater_img" src="{{userInfo.headImage}}"/>
+      </view>
+      <view class="intro_left_right">
+        <view class="intro_name">
+          {{util.dataNull(userInfo.nickName)}}
+        </view>
+        <view class="intro_abstract">{{util.dataNull(userInfo.inShort)}}</view>
+      </view>
+      <FollowBtn otherId="{{otherId}}" ext-class="p_m_r attentionBtn" userFollow="{{userInfo.follow}}" state="user"/>
+    </view>
+    <!-- 数量 -->
+    <view class="intro_data">
+      <view class="intro_data_item">
+        <view class="intro_data_item_num">{{detailedInfo.attentionNum}}</view>
+        <view class="intro_data_item_title">关注</view>
+      </view>
+      <view class="intro_data_item">
+        <view class="intro_data_item_num">{{detailedInfo.followNum}}</view>
+        <view class="intro_data_item_title">粉丝</view>
+      </view>
+      <view class="intro_data_item">
+        <view class="intro_data_item_num">{{detailedInfo.integral}}</view>
+        <view class="intro_data_item_title">积分</view>
+      </view>
+    </view>
+  </view>
+  <!-- 作品 & 操作 -->
+  <view class="works">
+    <view class="works_item" bindtap="toCollect">
+      <image class="works_item_icon" src="../../../icon/user/collect.png"></image>
+      <text class="works_item_title">ta的收藏</text>
+      <image class="works_item_right" src="../../../icon/user/right.png"></image>
+    </view>
+    <view class="works_item" bindtap="toArticle">
+      <image class="works_item_icon" src="../../../icon/user/article.png"></image>
+      <text class="works_item_title">ta的文章</text>
+      <image class="works_item_right" src="../../../icon/user/right.png"></image>
+    </view>
+    <view class="works_item" bindtap="toReward">
+      <image class="works_item_icon" src="../../../icon/user/reward.png"></image>
+      <text class="works_item_title">ta的悬赏</text>
+      <image class="works_item_right" src="../../../icon/user/right.png"></image>
+    </view>
+  </view>
+</view>

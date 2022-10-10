@@ -1,0 +1,202 @@
+<wxs module="util" src="../../../wxs/util.wxs"/>
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <Header><view class="head_title ellipsis">{{essay.title}}</view></Header>
+  
+  <scroll-view class="container"
+    bindscroll="scroll"
+    scroll-y>
+
+    <view class="body {{showUnlockShade ? 'max' : ''}}" style="padding-top: {{statusBarHeight + 52}}px">
+
+      <!-- 作者信息 -->
+      <view class="authorBox">
+        <GetUserInfoBox userId="{{author.id}}">
+          <view class="authorCoverBox">
+            <image src="{{author.headImage}}" class="authorCover"/>
+          </view>
+          <view class="authorInfo">
+            <view class="authorName ellipsis">{{author.nickName}}</view>
+            <view class="authorInShort ellipsis fc_gray_font">{{author.inShort || "什么都没写"}}</view>
+          </view>
+        </GetUserInfoBox>
+        <FollowBtn otherId="{{author.id}}" ext-class="p_m_r attentionBtn" userFollow="{{author.follow}}" state="user"/>
+      </view>
+
+      <!-- 文章 -->
+      <view class="essayBox">
+        <view class="essayTitle ellipsis_2">{{essay.title}}</view>
+        <image class="essayCover" wx:if="{{essay.coverUrl}}" src="{{essay.coverUrl}}"
+          data-url="{{essay.coverUrl}}"
+          bindtap="showImage"/>
+        <cEditor ext-class="essayContent"
+          showImgResize="{{false}}"
+          html="{{essay.text}}"
+          readOnly/>
+      </view>
+    </view>
+    
+    <!-- 备注信息 -->
+    <view class="markLabel fc_gray_font" id="markLabel">
+      发布于 {{essay.createTime}} · 著作权归作者所有
+    </view>
+    
+    <!-- 评论 -->
+    <view class="footerFixed">
+      <view class="footerBox">
+        <view class="footerTitle">评论 {{commentTotal}}</view>
+        <!-- 浮动评论框 -->
+        <!-- <view wx:if="{{fixInput}}" -->
+        <view wx:if="{{true}}"
+          class="footerInputBox table fix"
+          style="bottom: {{fixBottom}}px;">
+          <view class="row">
+            <view class="footerItemCover cell">
+              <image class="footerInputCover" src="{{userInfo.headImage}}"/>
+            </view>
+            <view class="footerInputCell cell">
+              <input class="footerInputInput bc_gray_tint"
+                placeholder="写下你的评论"
+                placeholder-class="fc_gray_font"
+                value="{{commentText}}"
+                focus="{{fixInput}}"
+                adjust-position="{{false}}"
+                bindinput="commentInput"
+                bindfocus="inputFocus"
+                bindblur="inputBlur"
+                bindconfirm="publishCommost"></input>
+            </view>
+            <view class="footerInputIssue cell">
+              <view class="issue" bindtap="publishCommost">确定</view>
+            </view>
+          </view>
+        </view>
+        <!-- 评论框 -->
+        <view wx:else class="footerInputBox table">
+          <view class="row">
+            <view class="footerItemCover cell">
+              <image class="footerInputCover" src="{{userInfo.headImage}}"/>
+            </view>
+            <view class="footerInputCell cell" bindtap="openFixInput">
+              <view class="footerInputInput bc_gray_tint fc_gray_font">
+              {{commentText && commentText != '' ? commentText : '添加评论...'}}
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="footerBody" wx:if="{{commentHotList.length}}">
+          <view class="footerItem"
+            wx:for="{{commentHotList}}" wx:key="index"
+            data-idx="{{index}}"
+            bindtap="stairClick">
+            <view class="com_coverBox">
+              <GetUserInfoBox userId="{{item.senderInfo.id}}">
+                <image class="com_cover" src="{{item.senderInfo.headImage}}"></image>
+              </GetUserInfoBox>
+            </view>
+            <view class="com_conBox">
+              <view class="com_name">
+                {{item.senderInfo.nickName}}
+                <image class="com_more" src="/icon/more.png" catchtap="buttonShow"
+                  data-idx="{{index}}"></image>
+              </view>
+              <view class="com_text">{{item.text}}</view>
+              <view class="com_timeBox">
+                <view class="com_time">{{util.msgTime(item.createdAt)}}</view>
+                <view class="commentButtoms">
+                  <view class="button">
+                    <image src="/icon/pinglun.png" class="btnImg"></image>
+                    <text class="btnNum">{{item.subComments.totalElements}}</text>
+                  </view>
+                  <view class="button">
+                    <image wx:if="{{item.star}}" src="/icon/icn_zan_2.png" class="btnImg"></image>
+                    <image wx:if="{{!item.star}}" src="/icon/pl_zan.png" class="btnImg"></image>
+                    <text class="btnNum">{{item.starNum}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="footerLookAllBox" wx:if="{{commentTotal != 0 && commentTotal > commentHotList.length}}">
+            <view class="footerLookAll"
+              bindtap="openComment"><text style="vertical-align: middle;">查看全部评论</text><image class="com_right" src="/icon/right.png"></image></view>
+          </view>
+        </view>
+        <view wx:if="{{!commentTotal}}" class="notComment fc_gray_font">~ 恭喜，你是第一位评论者 ~</view>
+      </view>
+      <view class="pageUtilBox lh_shadow" wx:if="{{!fixInput}}">
+        <view class="moreUtil" bindtap="utilShow">
+          <image class="moreUtil_img" src="/icon/util.png"></image>
+          更多操作
+          <div class="moreBg" wx:if="{{showUtil}}" catchtap="utilHide"></div>
+          <view class="moreUtilList" wx:if="{{showUtil}}">
+            <view class="moreUtilItem" wx:if="{{userInfo.id == essay.userId}}" catchtap="deleteUtil">删除</view>
+            <view class="moreUtilItem" wx:if="{{userInfo.id == essay.userId}}" catchtap="compileUtil">编辑</view>
+            <view class="moreUtilItem" wx:if="{{userInfo.id == essay.userId}}" catchtap="revocationUtil">撤销发布</view>
+            <view class="moreUtilItem" wx:if="{{userInfo.id == essay.userId}}" catchtap="setIntegralUtil">修改积分</view>
+            <view class="moreUtilItem" wx:if="{{userInfo.id != essay.userId}}" catchtap="reportUtil">举报</view>
+          </view>
+        </view>
+        <!-- 收藏 -->
+        <view class="utilItem" bindtap="articleTabCollect">
+          <image wx:if="{{collection}}" src="/icon/shoucang_active_1.png" class="utilIcon"></image>
+          <image wx:else src="/icon/shoucang.png" class="utilIcon"></image>
+          <view class="utilText">{{essay.collectNum || 0}}</view>
+        </view>
+        <!-- 点赞 -->
+        <view class="utilItem" bindtap="articleTabStar">
+          <image wx:if="{{star}}" src="/icon/ziyuan_active_1.png" class="utilIcon"></image>
+          <image wx:else src="/icon/ziyuan.png" class="utilIcon"></image>
+          <view class="utilText">{{essay.starNum || 0}}</view>
+        </view>
+        <!-- 阅读 -->
+        <view class="utilItem">
+          <image src="/icon/yuedu_active.png" class="utilIcon"></image>
+          <view class="utilText fc_gray_font">{{essay.displayNum || 0}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<ConInfo id="coninfo" appId="{{essayid}}" stairObj="{{stairObj}}" bindcloseEnd="closeEnd"/>
+<Prompt
+  id="prompt"
+  mold="textarea"
+  placeholder="{{promptOption.placeholder}}"
+  confirmText="{{promptOption.confirmText}}"
+  cancelText="{{promptOption.cancelText}}"
+  callBackKey="{{promptOption.callBackKey}}"
+  label="{{promptOption.label}}"
+  inputType="{{promptOption.inputType}}"
+  type="{{promptOption.type}}"
+  bindconfirm="promptConfirm"/>
+
+<view class="unlockShade" wx:if="{{showUnlockShade}}">
+  <view class="unlockShade_gradual" bindtap="unlockEssay">
+    <view class="unlockShade_button">点击解锁文章</view>
+  </view>
+</view>
+
+<view class="buttonBoxBg {{buttonBox.show ? 'show' : 'hide'}}" catchtap="buttonHide"></view>
+<view class="buttonBox {{buttonBox.show ? 'show' : 'hide'}}">
+  <view class="bnbx_title ellipsis">{{buttonBox.data.senderInfo.nickName}}: {{buttonBox.data.text}}</view>
+  <view class="bnbx_body">
+    <view class="bnbx_item" data-idx="{{buttonBox.idx}}" catchtap="stairClick">
+      <image src="../../../icon/icn_pinglun_2.png"></image>
+      <view>评论</view>
+    </view>
+    <view class="bnbx_item" catchtap="tabStar">
+      <image src="../../../icon/icn_zan_2.png"></image>
+      <view>{{buttonBox.data.star ? '取消点赞' : '点赞'}}</view>
+    </view>
+    <view class="bnbx_item" data-type="COMMENT" data-id="{{buttonBox.data.id}}" catchtap="reportUtil">
+      <image src="../../../icon/icn_baojing.png"></image>
+      <view>举报</view>
+    </view>
+    <view class="bnbx_item" wx:if="{{userInfo.id == buttonBox.data.senderInfo.id}}" catchtap="delCom">
+      <image src="../../../icon/icn_shanchu.png"></image>
+      <view>删除</view>
+    </view>
+  </view>
+  <view class="bnbx_foot" catchtap="buttonHide">取消</view>
+</view>

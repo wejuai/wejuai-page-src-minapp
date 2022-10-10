@@ -1,0 +1,145 @@
+<wxs module="util" src="../../../wxs/util.wxs"/>
+
+<!-- 上方弹操作栏 -->
+<!-- <view class="universeUtil_top_box" wx:if="{{util_show && util_top_list.length > 0}}">
+  <view class="universeUtil_box_item {{util_item_show ? 'y_showAn_' + index : 'y_hideAn_top_' + index}}"
+    wx:for="{{util_top_list}}" wx:key="index">
+    <view class="universeUtil_box_item_bottom"></view>
+    <view class="universeUtil_box_item_top">
+      <view class="util_item_title">{{item.title}}</view>
+    </view>
+  </view>
+</view> -->
+
+<!-- 右方弹操作栏 -->
+<view class="universeUtil_right_box" wx:if="{{util_show && util_right_list.length > 0}}">
+  <view class="universeUtil_box_item {{util_item_show ? 'x_showAn_' + index : 'x_hideAn_right_' + index}} {{item.alone ? 'alone' : ''}} {{item.first ? 'first' : ''}}"
+    wx:for="{{util_right_list}}" wx:key="index"
+    data-key="{{item.key}}" data-idx="{{index}}" bindtap="utilClick">
+    <view class="universeUtil_box_item_bottom"></view>
+    <button wx:if="{{item.button}}"
+      data-universeUtilObj="{{universeUtilObj}}"
+      data-key="{{item.key}}"
+      class="universeUtil_box_item_btn"
+      open-type="share"></button>
+    <view class="universeUtil_box_item_top">
+      <image class="util_item_img" src="{{item.icon}}"></image>
+      <view wx:if="{{item.label}}" class="util_item_text">{{item.label}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 下方弹操作栏 -->
+<view class="universeUtil_bottom_box" wx:if="{{util_show && util_bottom_list.length > 0}}">
+  <view class="universeUtil_box_item {{util_item_show ? 'y_showAn_' + index : 'y_hideAn_bottom_' + index}}"
+    wx:for="{{util_bottom_list}}" wx:key="index"
+    data-key="{{item.key}}" bindtap="utilClick">
+    <view class="universeUtil_box_item_bottom"></view>
+    <button wx:if="{{item.button}}"
+      data-universeUtilObj="{{universeUtilObj}}"
+      data-key="{{item.key}}"
+      class="universeUtil_box_item_btn"
+      open-type="share"></button>
+    <view class="universeUtil_box_item_top">
+      <text class="util_item_icon iconfont {{item.icon}}"></text>
+    </view>
+  </view>
+</view>
+
+<!-- 左方弹操作栏 -->
+<view class="universeUtil_left_box" wx:if="{{util_show && util_bottom_list.length > 0}}">
+  <view class="universeUtil_box_item {{util_item_show ? 'x_showAn_' + index : 'x_hideAn_left_' + index}}"
+    wx:for="{{util_left_list}}" wx:key="index"
+    data-key="{{item.key}}" bindtap="utilClick">
+    <view class="universeUtil_box_item_bottom"></view>
+    <button wx:if="{{item.button}}"
+      data-universeUtilObj="{{universeUtilObj}}"
+      data-key="{{item.key}}"
+      class="universeUtil_box_item_btn"
+      open-type="share"></button>
+    <view class="universeUtil_box_item_top">
+      <text class="util_item_icon iconfont {{item.icon}}"></text>
+    </view>
+  </view>
+</view>
+
+<!-- 简介 -->
+<view class="universeUtil_inshort_box {{isUniverse ? 'universeUtil_universe_box' : ''}}"
+  wx:if="{{util_text_show}}"  animation="{{util_item_an}}">
+  <view class="universeUtil_inshort"
+    wx:for="{{util_inshort}}"
+    wx:key="index">
+    <image wx:if="{{item.src}}" class="universeUtil_inshort_img" src="{{item.src}}"></image>
+    <text class="universeUtil_inshort_text">{{item.text}}</text>
+  </view>
+</view>
+
+<!-- 坐标收藏 && 修改 -->
+<Prompt
+  id="prompt"
+  title="{{prompt.title}}"
+  placeholder="这是哪里"
+  confirmText="{{promot.confirmText}}"
+  callBackKey="{{prompt.callBackKey}}"
+  label="{{prompt.label}}"
+  bindconfirm="promptConfirm"/>
+
+<!-- 弹窗 - 收藏坐标列表 -->
+<Popup
+  id="popup"
+  title="{{popup.title}}"
+  confirmText="{{popup.confirmText}}"
+  callBackKey="{{popup.callBackKey}}"
+  bindconfirm="popupConfirm">
+  <block>
+    <view class="skip_item"
+      wx:if="{{skipList.length}}"
+      data-idx="{{index}}"
+      wx:for="{{skipList}}" wx:key="index"
+      bindtap="selectSkip">
+      <view class="skip_info_box {{skipSelect.id == item.id ? 'bg_main' : ''}}">
+        <view class="skip_title">
+            <!-- focus="{{setNameInput}}" -->
+          <input wx:if="{{setNameInput}}"
+            class="skip_title_input"
+            value="{{item.name}}"
+            data-id="{{item.id}}"
+            data-idx="{{index}}"
+            bindblur="skipNameSave"></input>
+          <text wx:else>{{item.name}}</text>
+        </view>
+        <view class="skip_label">{{item.x}} , {{item.y}}</view>
+      </view>
+      <view class="skip_btns {{skipSelect.id == item.id ? 'active' : ''}}">
+        <view class="skip_btn setName" data-id="{{item.id}}"
+          data-idx="{{index}}"
+          catchtap="skipNameChange">重命名</view>
+        <view class="skip_btn delete" data-id="{{item.id}}"
+          data-idx="{{index}}"
+          catchtap="skipDelete">删除</view>
+      </view>
+    </view>
+    <view class="skip_null fc_gray_font" wx:if="{{!skipList.length}}">还没有坐标</view>
+  </block>
+</Popup>
+
+<!-- 弹窗 - 道具 -->
+<Popup
+  id="popupProp"
+  ext-class="popupProp"
+  title="{{popupProp.title}}"
+  confirmText="{{popupProp.confirmText}}"
+  callBackKey="{{popupProp.callBackKey}}"
+  bindconfirm="popupPropConfirm">
+  <block>
+    <view class="prop_item" wx:if="{{propList.length}}" wx:for="{{propList}}" wx:key="index">
+      <view class="prop_title">{{item.name}}</view>
+      <view class="prop_label fc_gray_font">{{item.x}} , {{item.y}}</view>
+      <view class="prop_time fc_gray_font">{{item.createdAt}}</view>
+    </view>
+    <view class="prop_null fc_gray_font" wx:if="{{!propList.length}}">还没有道具</view>
+  </block>
+</Popup>
+
+<wxc-dialog isShow="{{dialog.show}}" content="{{dialog.content}}"
+  bindconfirm="dialogConfirm"/>

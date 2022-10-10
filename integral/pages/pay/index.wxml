@@ -1,0 +1,22 @@
+<view>
+  <Header>{{header}}</Header>
+  <view class="body">
+    <image src="" class="integralIcon"></image>
+    <view class="payIntegral">{{payIntegral}}</view>
+    <view class="meIntegral">我的积分  {{userInfo.integral}}</view>
+    <view class="buttons">
+      <view class="button bc_main bg_main fc_white" bindtap="pay">支付积分</view>
+      <view class="button bc_main" bindtap="toBack">取消</view>
+    </view>
+  </view>
+</view>
+<view class="payShade" wx:if="{{shade.show}}">
+  <view class="payShade_inbox" data-type="{{shade.type}}">
+    <text wx:if="{{shade.type == 'being'}}" class="iconfont icon-gengduo"></text>
+    <text wx:if="{{shade.type == 'succes'}}" class="iconfont icon-xuanding"></text>
+    <text wx:if="{{shade.type == 'error'}}" class="iconfont icon-guanbi"></text>
+    <view wx:if="{{shade.type == 'being'}}" class="shadeTxt">正在支付积分</view>
+    <view wx:if="{{shade.type == 'succes'}}" class="shadeTxt">支付成功</view>
+    <view wx:if="{{shade.type == 'error'}}" class="shadeTxt">支付失败</view>
+  </view>
+</view>

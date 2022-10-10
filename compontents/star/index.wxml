@@ -1,0 +1,7 @@
+<view class="starBox" style="height: {{width}}rpx; line-height: {{width-10}}rpx;">
+  <image wx:for="{{max - 0}}" wx:key="*this"
+    style="width: {{width}}rpx; height: {{width}}rpx"
+    src="{{(item + 1) <= num ? '../../icon/user/star_solid_'+ (item + 1) +'.png' : '../../icon/user/star.png'}}" lazy-load="true"
+    data-id="{{item + 1}}" bindtap="changeNum"></image>
+  <text class="num" wx:if="{{showNum}}">{{num}}.0</text>
+</view>

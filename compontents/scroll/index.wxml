@@ -1,0 +1,36 @@
+<view class="ext-class">
+  <scroll-view class="scrollBox"
+    scroll-y="{{true}}"
+    lower-threshold="{{'40rpx'}}"
+    scroll-top="{{scrollTop}}"
+    scroll-with-animation="{{scrollWithAnimation}}"
+    enable-back-to-top="{{true}}"
+    refresher-enabled="{{true}}"
+    refresher-triggered="{{triggered}}"
+    refresher-default-style="black"
+    refresher-background="{{'white'}}"
+    show-scrollbar="{{false}}"
+    enhanced="{{true}}"
+    fast-deceleration="{{true}}"
+    bindscrolltolower="scrolltolower"
+    bindrefresherrefresh="refresherrefresh"
+    style="position: relative;height: {{scrollHeight}};">
+    <!-- 列表 -->
+    <slot></slot>
+    <!-- 首次加载占位 -->
+    <LoadItem type="{{loadType}}" wx:if="{{firstLoad}}"/>
+    <LoadItem type="{{loadType}}" wx:if="{{firstLoad}}"/>
+    <LoadItem type="{{loadType}}" wx:if="{{firstLoad}}"/>
+    <LoadItem type="{{loadType}}" wx:if="{{firstLoad}}"/>
+    <!-- 暂无数据 -->
+    <view class="dataToast fc_gray notData" wx:if="{{notData}}">
+      <image class="null_img" src="/icon/null.png"></image>
+      <view>{{nullLabel}}</view>
+    </view>
+    <!-- 暂无更多 -->
+    <view class="dataToast fc_gray_font" wx:if="{{notMore}}">-你看到了底线-</view>
+    <!-- 加载更多 -->
+    <!-- <view class="dataToast fc_gray_tint" wx:if="{{loadMore}}"></view> -->
+    <LoadItem type="{{loadType}}" wx:if="{{loadMore}}"/>
+  </scroll-view>
+</view>

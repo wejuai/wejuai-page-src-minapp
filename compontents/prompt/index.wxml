@@ -1,0 +1,55 @@
+<view class="ext-class">
+    <!-- 弹起内容 -->
+    <view class="promptContent" wx:if="{{backGroundShow}}">
+      <view class="promptBackground"
+      animation="{{backGroundAn}}"></view>
+      <!-- 内容容器 -->
+      <view class="promptBottomBox" wx:if="{{bodyShow}}"
+        animation="{{bodyAn}}">
+        <!-- 弹窗标题 -->
+        <view class="body_title">{{title}}</view>
+        <!-- 弹窗内容 -->
+        <view class="body_content">
+          <input
+            wx:if="{{mold == 'input'}}"
+            class="body_content_input bc_gray_tint"
+            value="{{inputVal}}"
+            type="{{inputType}}"
+            placeholder-class="fc_gray_font"
+            placeholder="{{placeholder}}"
+            bindconfirm="confirm"
+            bindinput="inputInput"/>
+          <textarea
+            wx:if="{{mold == 'textarea'}}"
+            class="body_content_textarea bc_gray_tint"
+            value="{{inputVal}}"
+            placeholder-class="fc_gray_font"
+            placeholder="{{placeholder}}"
+            maxlength="{{200}}"
+            show-confirm-bar="{{false}}"
+            bindconfirm="confirm"
+            bindinput="inputInput"/>
+          <input
+            wx:if="{{moreInput.id}}"
+            class="body_content_input bc_gray_tint moreInput"
+            value="{{moreInputVal}}"
+            type="text"
+            placeholder-class="fc_gray_font"
+            placeholder="{{moreInput.placeholder}}"
+            bindconfirm="confirm"
+            bindinput="moreInputInput"/>
+          <view wx:if="{{item}}"
+            wx:for="{{label}}"
+            wx:key="index"
+            class="body_content_label fc_gray_font" style="{{item.style}}">{{item.text}}</view>
+        </view>
+        <!-- 弹窗底部 -->
+        <view class="body_foot table">
+          <view class="row">
+            <view class="cell" bindtap="close">{{cancelText}}</view>
+            <view class="cell fc_main" bindtap="confirm">{{confirmText}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>

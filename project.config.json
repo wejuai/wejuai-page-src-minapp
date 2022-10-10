@@ -1,0 +1,193 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.1",
+  "appid": "wx858da3eb9bdb7388",
+  "projectname": "wejuai-minapp",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "编辑资料",
+          "pathName": "user/pages/userInfo/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "图片剪切",
+          "pathName": "pages/cropper/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "积分",
+          "pathName": "integral/pages/myIntegral/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "收藏列表",
+          "pathName": "user/pages/collect/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的",
+          "pathName": "pages/user/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "文章列表",
+          "pathName": "essay/pages/list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的关注",
+          "pathName": "user/pages/attention/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "他人用户中心",
+          "pathName": "user/pages/otherInfo/index",
+          "query": "id= 5f682ef88fa24d0001647dbd",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "聊天页",
+          "pathName": "message/pages/chatRoom/index",
+          "query": "id=5fb8f8af590ecf00016a085e",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "消息列表",
+          "pathName": "pages/message/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "文章详情",
+          "pathName": "essay/pages/info/index",
+          "query": "essayid=5fc9c05f420d92000113c05a",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的草稿",
+          "pathName": "user/pages/draft/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 12,
+          "name": "古玩-悬赏",
+          "pathName": "group/pages/info/index",
+          "query": "groupid=5ff2d1e0a554c613b86542d6",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "爱好列表",
+          "pathName": "user/pages/hobby/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "设置",
+          "pathName": "setting/pages/setting/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "探索首页",
+          "pathName": "pages/pageLoad/index",
+          "query": "performance=HIGH&x=-3&y=3",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "互联网",
+          "pathName": "subIndex/pages/home/index",
+          "query": "hobbyid=it",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

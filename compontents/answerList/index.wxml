@@ -1,0 +1,78 @@
+<wxs module="util" src="../../wxs/util.wxs"/>
+
+<view class="ext-class">
+  <view class="coninfoBox" wx:if="{{backGroundShow}}">
+    <!-- 遮罩层 -->
+    <view class="maskLayer" animation="{{backGroundAn}}"
+      bindtap="close"></view>
+    <!-- 容器 -->
+    <view class="coninfoBody" wx:if="{{bodyShow}}"
+      animation="{{bodyAn}}">
+      <!-- 回答 -->
+      <view class="coninfoStair">
+        <!-- 标题 -->
+        <view class="coninfoTitle table bc_gray_tint">
+          <view class="row">
+            <view class="cell iconCell" bindtap="close">
+              <text class="icon iconfont icon-guanbi"></text>
+            </view>
+            <view class="cell title">全部 {{commentPage.total}} 条回答</view>
+          </view>
+        </view>
+        <!-- 列表 -->
+        <view class="coninfoList">
+          <Scroll id="scrollStair"
+            ext-class="scroll"
+            current="{{commentPage.page}}"
+            bindloadList="getCommentList">
+            <view>
+              <view class="coninfoItem bc_gray_tint table"
+                wx:for="{{commentList}}" wx:key="index"
+                data-idx="{{index}}"
+                bindtap="toAnswerDeal">
+                <!-- 用户信息 -->
+                <view class="row">
+                  <view class="cell coverCell">
+                    <image class="cover" src="{{item.senderInfo.headImage}}"/>
+                  </view>
+                  <view class="cell nameCell">
+                    <view class="name fc_gray ellipsis">{{item.senderInfo.nickName}}</view>
+                    <view class="p_m_r moreIcon" catchtap="moreUtilClick">
+                      <text class="iconfont icon-gengduo"></text>
+                    </view>
+                  </view>
+                </view>
+                <!-- 内容 -->
+                <view class="row">
+                  <view class="cell"></view>
+                  <view class="cell textCell">
+                    <view class="text">{{item.inShort}}</view>   
+                  </view>
+                </view>
+                <!-- 时间\点赞\子评论 -->
+                <view class="row">
+                  <view class="cell"></view>
+                  <view class="cell labelCell">
+                    <!-- 发布时间 -->
+                    <view class="createTime p_m_r fc_gray_font">{{util.changeTime(item.createdAt, 1, '-')}}</view>
+                    <!-- 点赞 -->
+                    <!-- <view class="starBox {{item.star ? 'fc_main' : 'fc_gray_font'}}"
+                      data-idx="{{index}}" data-type="stair" catchtap="tabStar">
+                      <text class="starIcon iconfont icon-praise2"></text>
+                      <text class="starNum">{{util.maxNum(item.starNum)}}</text>
+                    </view> -->
+                    <!-- 子评论 -->
+                    <!-- <view class="subCommentBox fc_gray_font">
+                      <text class="subIcon iconfont icon-pinglun1"></text>
+                      <text class="subNum">{{util.maxNum(item.starNum)}}</text>
+                    </view> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </Scroll>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

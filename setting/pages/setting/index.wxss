@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+.set_item {
+  width: 100%;
+  padding: 30rpx 30rpx 30rpx 0rpx;
+  border-bottom: solid 1rpx;
+  position: relative;
+}
+.set_label {
+  font-size: 32rpx;
+}
+.iconfont {
+  right: 30rpx;
+  font-size: 22rpx;
+}
+.set_label {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100% !important;
+  max-width: 100%;
+}
+.set_value {
+  position: absolute;
+  top: 50%;
+  right: 90rpx;
+  transform: translate(0, -50%);
+}
